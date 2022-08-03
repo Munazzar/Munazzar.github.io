@@ -1,23 +1,28 @@
 <script type="text/javascript">
     function check(){
-            // console.log(btoa("47bfd350-2a3f-44ea-a7c0-3b279b2d70d6:fd194f8473794e0ef1f5e41ad52fd95b3a9c83fc"));
-      
-var xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
+        if(window.XMLHttpRequest)
+				{
+					obj=new XMLHttpRequest();
+				}
+				else
+				{
+					obj=new ActiveXObject('Microsoft.XMLHTTP');
+				}
+				obj.open("GET","https://munazzar.github.io/apicall.php",true);
+				obj.send();
+				obj.onreadystatechange=function()
+				{
+				if(obj.readyState==4 && obj.status==200)
+				{
+					value=obj.responseText;
+                    console.log(value);
 
-xhr.addEventListener("readystatechange", function() {
-  if(this.readyState === 4) {
-    console.log(this.responseText);
-  }
-});
 
-xhr.open("GET", "https://int-api.mx.com/users/USR-e3e6bfbf-c16e-419f-be47-d66dd274cc81/accounts");
-xhr.setRequestHeader("Accept", "application/vnd.mx.api.v1+json");
-xhr.setRequestHeader("Access-Control-Allow-Origin", "https://munazzar.github.io");
-xhr.setRequestHeader("Authorization", "Basic NDdiZmQzNTAtMmEzZi00NGVhLWE3YzAtM2IyNzliMmQ3MGQ2OmZkMTk0Zjg0NzM3OTRlMGVmMWY1ZTQxYWQ1MmZkOTViM2E5YzgzZmM=");
+                }
+                }
 
-xhr.send();
     }
+
 </script>
 
 <body onload="check()">
