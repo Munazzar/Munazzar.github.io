@@ -1,3 +1,5 @@
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
 <script type="text/javascript">
     function check(){
         if(window.XMLHttpRequest)
@@ -22,6 +24,20 @@
                 }
 
     }
+	
+	  var settings = {
+  "url": "https://int-api.mx.com/users/USR-e3e6bfbf-c16e-419f-be47-d66dd274cc81/accounts",
+  "method": "GET",
+  "timeout": 0,
+  "headers": {
+    "Accept": "application/vnd.mx.api.v1+json",
+    "Authorization": "Basic NDdiZmQzNTAtMmEzZi00NGVhLWE3YzAtM2IyNzliMmQ3MGQ2OmZkMTk0Zjg0NzM3OTRlMGVmMWY1ZTQxYWQ1MmZkOTViM2E5YzgzZmM="
+  },
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
 
 </script>
 
