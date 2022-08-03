@@ -13,6 +13,7 @@ xhr.addEventListener("readystatechange", function() {
 
 xhr.open("GET", "https://int-api.mx.com/users/USR-e3e6bfbf-c16e-419f-be47-d66dd274cc81/accounts");
 xhr.setRequestHeader("Accept", "application/vnd.mx.api.v1+json");
+xhr.setRequestHeader("Access-Control-Allow-Origin", "https://munazzar.github.io");
 xhr.setRequestHeader("Authorization", "Basic NDdiZmQzNTAtMmEzZi00NGVhLWE3YzAtM2IyNzliMmQ3MGQ2OmZkMTk0Zjg0NzM3OTRlMGVmMWY1ZTQxYWQ1MmZkOTViM2E5YzgzZmM=");
 
 xhr.send();
