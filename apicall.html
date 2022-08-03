@@ -1,0 +1,46 @@
+<script type="text/javascript">
+    function check(){
+
+var url = "https://int-api.mx.com/users/USR-e3e6bfbf-c16e-419f-be47-d66dd274cc81/accounts";
+
+var xhr = new XMLHttpRequest();
+xhr.open("GET", url);
+
+xhr.setRequestHeader("Accept", "application/vnd.mx.api.v1+json");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("Accept-Language", "en-US");
+xhr.setRequestHeader("Authorization", "Basic NDdiZmQzNTAtMmEzZi00NGVhLWE3YzAtM2IyNzliMmQ3MGQ2OmZkMTk0Zjg0NzM3OTRlMGVmMWY1ZTQxYWQ1MmZkOTViM2E5YzgzZmM=");
+
+xhr.onreadystatechange = function () {
+   if (xhr.readyState === 4) {
+      console.log(xhr.status);
+      console.log(xhr.responseText);
+   }};
+
+   var data = `{      
+        "widget_url": {        
+          "client_redirect_url": "https://mx.com",
+          "color_scheme": "light",
+          "current_institution_code": "chase",
+          "current_institution_guid": "INS-f1a3285d-e855-b61f-6aa7-8ae575c0e0e9",
+          "current_member_guid": "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b",
+          "disable_institution_search": false,
+          "include_transactions": true,
+          "is_mobile_webview": true,
+          "mode": "aggregation",
+          "ui_message_version": 4,
+          "ui_message_webview_url_scheme": "mx",
+          "update_credentials": false,
+          "widget_type": "connect_widget"
+        }
+      }`;
+
+xhr.send(data);
+
+}
+
+</script>
+
+<body onload="check()">
+<h2>check</h2>
+</body>
