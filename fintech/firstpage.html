@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page1</title>
+       <!-- for icons plus minus font awesome -->
+       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
+        <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/page1.css">
+    <link rel="stylesheet" href="css/new.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+</head>
+<body>
+  <div class="main">
+
+  
+  <div class="sidebar" id="mySidebar" >
+    <div style="text-align:right ;" onclick="sideBar()">
+
+      <i class="fa fa-bars" aria-hidden="true" style="font-size:35px;padding: 5px;" ></i>
+
+      
+    </div>
+    <pre id="api_output"></pre>
+    
+  </div>
+  <div class="second " id="second">
+    <div class="nav-bar" id="nav-bar"></div>
+    <div class="banner">
+      <div  id="banner" class="banner-show">
+       <img src="assets/banner-2.jpg">
+       <h1 class="banner-hdr" id="banner-hdr">Personal Loan</h1>
+      <p class="banner-txt" id="banner-txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <button class="banner-btn" id="apply-now">Apply Now</button>
+    </div>
+      <img class ="banner-sh" id="banner-sh" src="assets/show-green-24.png" onClick="banner()">
+      </div>
+  <section class="step-wizard">
+    <ul class="step-wizard-list">
+        <li class="step-wizard-item current-item">
+          <span class="progress-label">Step 01</span>
+            <span class="progress-count">1</span>
+            
+        </li>
+      
+        <li class="step-wizard-item ">
+          <!-- <span class="progress-label">Step 02</span> -->
+            <span class="progress-count">2</span>
+           
+        </li>
+        <li class="step-wizard-item">
+          <!-- <span class="progress-label">Step 03</span> -->
+            <span class="progress-count">3</span>
+            
+        </li>
+        <li class="step-wizard-item">
+          <!-- <span class="progress-label">Step 04</span> -->
+            <span class="progress-count">4</span>
+            
+        </li>
+      <li class="step-wizard-item">
+        <!-- <span class="progress-label">Step 5</span> -->
+            <span class="progress-count">5</span>
+            
+        </li>
+      <li class="step-wizard-item">
+        <!-- <span class="progress-label">Step 06</span> -->
+            <span class="progress-count">6</span>
+             </li>
+    </ul>
+    </section>
+    <div style="padding-left:20px;">
+    <ul class="wrapper-accordion">
+      <li>
+        <input type="checkbox" unchecked>
+        <i></i>
+        <span>Personal Details</span>
+       
+    </li>
+    </ul>
+    <div class="container1">
+      
+        <h4>We, Finance Credit Card Applicaiton Form</h4>
+                            <h5><strong>Credit Card Application Form<strong></h5>
+                            <p>Please fill this form out so that we can issue a credit card directly online.
+                                <br>
+                                If you are not able to complete then we will reach out.
+
+                            </p>
+
+    </div>
+    <div class="container2">
+        
+        <div class="box1">
+                <h3>Step 1/5 Personal Details</h3>
+              <input type="text" class="form-control" id="first_name" placeholder="First Name"><br>
+              <input type="text" class="form-control" id="last_name" placeholder="Last Name"><br>
+              <input type="text" class="form-control" id="date_of_birth" placeholder="Date of birth"><br>
+              <input type="text" class="form-control" id="email_id" placeholder="Email ID"><br>
+              <input type="text" class="form-control" id="address" placeholder="Address"><br>
+              <input type="text" class="form-control" id="mobile_number" placeholder="Mobile Number"><br>
+              <button id="nxtbtn" type="submit"><a href="secondpage.html" style="color: white;">NEXT ➔</a></button>
+            </div>
+        
+        <div class="box2">
+            <img  id="img1" src="assets/img1.png" alt="img1 is here">
+
+        </div>
+
+    </div>
+    
+      <section>
+        <ul class="wrapper-accordion">
+          
+            <li>
+                <input type="checkbox" checked>
+                <i></i>
+                <span>Employment Details</span>
+                <p>Using the sibling and checked selectors, we can determine the styling of sibling elements based
+                    on the checked state of the checkbox input element. One use, as demonstrated here, is an
+                    entirely CSS and HTML accordion element. Media queries are used to make the element responsive
+                    to different screen sizes.</p>
+            </li>
+            <li>
+                <input type="checkbox" checked>
+                <i></i>
+                <span>Financial Obligation</span>
+                <p>By making the open state default for when :checked isn't detected, we can make this system
+                    accessable for browsers that don't recognize :checked. The fallback is simply an open accordion.
+                    The accordion can be manipulated with Javascript (if needed) by changing the "checked" property
+                    of the input element.</p>
+            </li>
+            <li>
+                <input type="checkbox" checked>
+                <i></i>
+                <span>Choose a Card</span>
+                <p>By making the open state default for when :checked isn't detected, we can make this system
+                    accessable for browsers that don't recognize :checked. The fallback is simply an open accordion.
+                    The accordion can be manipulated with Javascript (if needed) by changing the "checked" property
+                    of the input element.</p>
+            </li>
+            <li>
+                <input type="checkbox" checked>
+                <i></i>
+                <span>Document Upload</span>
+                <p>By making the open state default for when :checked isn't detected, we can make this system
+                    accessable for browsers that don't recognize :checked. The fallback is simply an open accordion.
+                    The accordion can be manipulated with Javascript (if needed) by changing the "checked" property
+                    of the input element.</p>
+            </li>
+            <li>
+              <input type="checkbox" checked>
+              <i></i>
+              <span>Review Details</span>
+              <p>By making the open state default for when :checked isn't detected, we can make this system
+                  accessable for browsers that don't recognize :checked. The fallback is simply an open accordion.
+                  The accordion can be manipulated with Javascript (if needed) by changing the "checked" property
+                  of the input element.</p>
+          </li>
+        </ul>
+    </section>
+  </div>
+      <div class="footer">
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript">
+        $(".item-header").click(function(){
+          $(".accordion-item").removeClass("active");
+          $(this).parent().addClass("active");
+          $(".icon").text("+");
+          $(this).children(".icon").text("-");
+        });
+
+      
+
+  
+
+
+        
+      </script>
+</body>
+</html>

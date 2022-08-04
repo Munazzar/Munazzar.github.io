@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>page5</title>
+    <link rel="stylesheet" href="css/page5.css">
+    <link rel="stylesheet" href="css/page6.css">
+    <link rel="stylesheet" href="css/new.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="main">
+
+  
+        <div class="sidebar" id="mySidebar" >
+          <div style="text-align:right ;" onclick="sideBar()">
+      
+            <i class="fa fa-bars" aria-hidden="true" style="font-size:35px;padding: 5px;" ></i>
+      
+            
+          </div>
+          <pre id="api_output"></pre>
+          
+        </div>
+        <div class="second " id="second">
+            <div class="nav-bar" id="nav-bar"></div>
+    <div class="banner">
+      <div  id="banner" class="banner-show">
+       <img src="assets/banner-2.jpg">
+       <h1 class="banner-hdr" id="banner-hdr">Personal Loan</h1>
+       <p class="banner-txt" id="banner-txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+       <button class="banner-btn" id="apply-now">Apply Now</button>
+    </div>
+      <img class ="banner-sh" id="banner-sh" src="assets/show-green-24.png" onClick="banner()">
+      </div>
+
+
+    <div class="wrapper">
+        <section class="step-wizard">
+            <ul class="step-wizard-list">
+                <li class="step-wizard-item">
+                    <span class="progress-label">Step 01</span>
+                    <span class="progress-count">1</span>
+                </li>
+                <li class="step-wizard-item ">
+                    <span class="progress-label">Step 02</span>
+                    <span class="progress-count">2</span>
+                <li class="step-wizard-item">
+                    <span class="progress-label">Step 03</span>
+                    <span class="progress-count">3</span>
+                    <span class="progress-label word-break">Auto filled</span>
+                </li>
+                <li class="step-wizard-item">
+                    <span class="progress-label">Step 04</span>
+                    <span class="progress-count">4</span>
+                    <span class="progress-label word-break">Auto filled</span>
+                </li>
+                </li>
+                <li class="step-wizard-item ">
+                    <span class="progress-label">Step 05</span>
+                    <span class="progress-count">5</span>
+                    <span class="progress-label word-break">Auto filled</span>
+                </li>
+                </li>
+                <li class="step-wizard-item current-item">
+                    <span class="progress-label">Step 06</span>
+                    <span class="progress-count"></span>
+                </li>
+            </ul>
+        </section>
+        <ul class="wrapper-accordion">
+            <li>
+                <input type="checkbox" checked>
+                <i></i>
+                <span>Personal Details</span>
+                <p>This page was written in HTML and CSS. The CSS was compiled from SASS. I used Normalize as my CSS
+                    reset and -prefix-free to save myself some headaches. I haven't quite gotten the hang of Slim
+                    for compiling into HTML, but someday I'll use it since its syntax compliments that of SASS.
+                    Regardless, this could all be done in plain HTML and CSS.</p>
+            </li>
+            <li>
+                <input type="checkbox" checked>
+                <i></i>
+                <span>Employment Details</span>
+                <p>Using the sibling and checked selectors, we can determine the styling of sibling elements based
+                    on the checked state of the checkbox input element. One use, as demonstrated here, is an
+                    entirely CSS and HTML accordion element. Media queries are used to make the element responsive
+                    to different screen sizes.</p>
+            </li>
+            <li>
+                <input type="checkbox" checked>
+                <i></i>
+                <span>Financial Obligation</span>
+                <p>By making the open state default for when :checked isn't detected, we can make this system
+                    accessable for browsers that don't recognize :checked. The fallback is simply an open accordion.
+                    The accordion can be manipulated with Javascript (if needed) by changing the "checked" property
+                    of the input element.</p>
+            </li>
+            <li>
+                <input type="checkbox" checked>
+                <i></i>
+                <span>Choose a Card</span>
+                <p>By making the open state default for when :checked isn't detected, we can make this system
+                    accessable for browsers that don't recognize :checked. The fallback is simply an open accordion.
+                    The accordion can be manipulated with Javascript (if needed) by changing the "checked" property
+                    of the input element.</p>
+            </li>
+            <li>
+                <input type="checkbox" checked>
+                <i></i>
+                <span>Document Upload</span>
+                <p>By making the open state default for when :checked isn't detected, we can make this system
+                    accessable for browsers that don't recognize :checked. The fallback is simply an open accordion.
+                    The accordion can be manipulated with Javascript (if needed) by changing the "checked" property
+                    of the input element.</p>
+            </li>
+            <li>
+                <input type="checkbox" unchecked>
+                <i></i>
+                <span>Review Details</span>
+                
+            </li>
+        </ul>
+        <div class="split-wrapper">
+            <p class="sub-heading">Please review your details(Review)</p>
+            <form class="form" id="form">
+                <div class="split left">
+                    <div class='form-control'>
+                        <input type="text" placeholder="Name" id='name'>
+                    </div>
+                    <div class='form-control'>
+                        <input type="text" placeholder="Date of Birth" id='birth'>
+                    </div>
+
+                    <div class='form-control'>
+                        <input type="text" placeholder="some data from MX" id='data'>
+                    </div>
+
+                    <div class='form-control'>
+                        <input type="text" placeholder="card selected" id='card'>
+                    </div>
+
+                    <div class='form-control'>
+                        <input type="text" placeholder="Name" id='name1'>
+                    </div>
+
+                    <div class='form-control'>
+                        <input type="text" placeholder="Date of Birth" id='birth1'>
+                    </div>
+
+                    <div class='form-control'>
+                        <input type="text" placeholder="some data from MX" id='data1'>
+                    </div>
+
+                    <div class='form-control'>
+                        <input type="text" placeholder="card selected" id='card1'>
+                    </div>
+                </div>
+                <div class="split right">
+                    <div class='form-control'>
+                        <select>
+                            <option value="cards">qualified for cards</option>
+                        </select>
+                    </div>
+                    <div class='form-control'>
+                        <select>
+                            <option value="cards">qualified for cards</option>
+                        </select>
+                    </div>
+                    <div class='form-control'>
+                        <select>
+                            <option value="cards">qualified for cards</option>
+                        </select>
+                    </div>
+                    <div class='form-control'>
+                        <input type="text" placeholder="card selected" id='card1'>
+                    </div>
+
+                    <div class='form-control'>
+                        <select>
+                            <option value="cards">qualified for cards</option>
+                        </select>
+                    </div>
+                    <div class='form-control'>
+                        <select>
+                            <option value="cards">qualified for cards</option>
+                        </select>
+                    </div>
+                    <div class='form-control'>
+                        <select>
+                            <option value="cards">qualified for cards</option>
+                        </select>
+                    </div>
+                    <div class='form-control'>
+                        <select>
+                            <option value="cards">Qualified for cards</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- <button type="button">EDIT ➔</button>
+                <button type="button" id="complete"><a href="sixthpage.html">COMPLETE ➔</a></button> -->
+
+            </form>
+            <section>
+               
+            </section>
+        </div>
+
+
+        <div class="split-wrapper">
+            <p class="sub-heading">Application Summary</p>
+            <form class="form" id="form">
+                <div class="split left">
+                    <div class='form-control'>
+                        <input type="text" placeholder="Andrea" id='name'>
+                    </div>
+                    <div class='form-control'>
+                        <input type="text" placeholder="03/05/1990" id='birth'>
+                    </div>
+
+                    <div class='form-control'>
+                        <input type="text" placeholder="Visa International Card" id='data'>
+                    </div>
+
+                    
+                </div>
+                <div class="split right">
+                    <div class='form-control'>
+                        <input type="text" placeholder="Rodriguez" id='card1'>
+                    </div>
+                    <div class='form-control'>
+                        <input type="text" placeholder="West Side Avenue" id='card1'>
+                    </div>
+                    <div class='form-control'>
+                        <input type="text" placeholder="West Verginia" id='card1'>
+                    </div>
+                    
+                </div>
+            </form>
+            <div class="container2">
+        
+                <div class="box1">
+                     <img src="assets/card.png" id="card-image" alt="card-image" >
+                     <p>Card Name<br>
+                       Visa international card<br>Qty 1     </p><br>
+                       <button class="btn">REMOVE</button><button class="btn">EDIT</button>
+                    </div>
+                    
+                
+                <div class="box2">
+                    <h2>Order Summary<h2>
+                        <div class="div1">
+                            <p class="p1">Credit Check</p>
+                            <p class="p2"><span id="check">&#10003;</span></p>
+                            <p class="p1">Shipping Address</p>
+                            <p class="p2">68 West Side Avenue<br> LIBERTY,West Verginia</p>
+                            <p class="p1" style="padding-top:40px;" >Bill Date</p>
+                            <p class="p2" >20/05/2022</p>
+                            <p class="p1">Credit Limit</p>
+                            <p class="p2" >$50000</p>
+                            
+
+                        </div> 
+                        
+                         <div>
+                               <p id="checkbox-para"><input type="checkbox"> Submiting this form your agree to our<strong><br> Privacy policy and Terms & Conditions</strong></p> 
+                               <a href="thankyou.html"> <button >SUBMIT➔</button></a>
+                            </div>
+
+                    
+                    
+                </div>
+                
+        
+            </div>
+            
+          
+        </div>
+
+        
+    </div>
+    <div class="footer">
+        
+    </div>
+    </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/main.js"></script>
+
+</html>

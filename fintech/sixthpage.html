@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>page6</title>
+    <link rel="stylesheet" href="css/page6.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <section class="step-wizard">
+            <ul class="step-wizard-list">
+                <li class="step-wizard-item">
+                    <span class="progress-label">Step 01</span>
+                    <span class="progress-count">1</span>
+                </li>
+                <li class="step-wizard-item ">
+                    <span class="progress-label">Step 02</span>
+                    <span class="progress-count">2</span>
+                <li class="step-wizard-item">
+                    <span class="progress-label">Step 03</span>
+                    <span class="progress-count">3</span>
+                    <span class="progress-label word-break">Auto filled</span>
+                </li>
+                <li class="step-wizard-item">
+                    <span class="progress-label">Step 04</span>
+                    <span class="progress-count">4</span>
+                    <span class="progress-label word-break">Auto filled</span>
+                </li>
+                </li>
+                <li class="step-wizard-item ">
+                    <span class="progress-label">Step 05</span>
+                    <span class="progress-count">5</span>
+                    <span class="progress-label word-break">Auto filled</span>
+                </li>
+                </li>
+                <li class="step-wizard-item current-item">
+                    <span class="progress-label">Step 06</span>
+                    <span class="progress-count"></span>
+                </li>
+            </ul>
+        </section>
+        <div class="split-wrapper">
+            <p class="sub-heading">Application Summary</p>
+            <form class="form" id="form">
+                <div class="split left">
+                    <div class='form-control'>
+                        <input type="text" placeholder="Andrea" id='name'>
+                    </div>
+                    <div class='form-control'>
+                        <input type="text" placeholder="03/05/1990" id='birth'>
+                    </div>
+
+                    <div class='form-control'>
+                        <input type="text" placeholder="Visa International Card" id='data'>
+                    </div>
+
+                    
+                </div>
+                <div class="split right">
+                    <div class='form-control'>
+                        <input type="text" placeholder="Rodriguez" id='card1'>
+                    </div>
+                    <div class='form-control'>
+                        <input type="text" placeholder="West Side Avenue" id='card1'>
+                    </div>
+                    <div class='form-control'>
+                        <input type="text" placeholder="West Verginia" id='card1'>
+                    </div>
+                    
+                </div>
+            </form>
+            <div class="container2">
+        
+                <div class="box1">
+                     <img src="card.png" id="card-image" alt="card-image">
+                     <p>Card Name<br>
+                       Visa international card<br>Qty 1     </p><br>
+                       <button class="btn">REMOVE</button><button class="btn">EDIT</button>
+                    </div>
+                    
+                
+                <div class="box2">
+                    <h2>Order Summary<h2>
+                        <div class="div1">
+                            <p class="p1">Credit Check</p>
+                            <p class="p2"><span id="check">&#10003;</span></p>
+                            <p class="p1">Shipping Address</p>
+                            <p class="p2">68 West Side Avenue<br> LIBERTY,West Verginia</p>
+                            <p class="p1" style="padding-top:25px;">Bill Date</p>
+                            <p class="p2" style="padding-bottom: 10px;">20/05/2022</p>
+                            <p class="p1"style="padding-top:10px;">Credit Limit</p>
+                            <p class="p2" style="padding-bottom: 15px;">$50000</p>
+                            
+
+                        </div> 
+                        
+                         <div>
+                               <p id="checkbox-para"><input type="checkbox"> Subbmiting this form your aggree our<strong><br> Privacy policy and Terms & Conditions</strong></p> 
+                                <button>SUBMIT➔</button>
+                            </div>
+
+                    
+                    
+                </div>
+                
+        
+            </div>
+            
+            <section>
+                <ul class="wrapper-accordion">
+                    <li>
+                        <input type="checkbox" checked>
+                        <i></i>
+                        <span>Personal Details</span>
+                        <p>This page was written in HTML and CSS. The CSS was compiled from SASS. I used Normalize as my CSS
+                            reset and -prefix-free to save myself some headaches. I haven't quite gotten the hang of Slim
+                            for compiling into HTML, but someday I'll use it since its syntax compliments that of SASS.
+                            Regardless, this could all be done in plain HTML and CSS.</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" checked>
+                        <i></i>
+                        <span>Employment Details</span>
+                        <p>Using the sibling and checked selectors, we can determine the styling of sibling elements based
+                            on the checked state of the checkbox input element. One use, as demonstrated here, is an
+                            entirely CSS and HTML accordion element. Media queries are used to make the element responsive
+                            to different screen sizes.</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" checked>
+                        <i></i>
+                        <span>Financial Obligation</span>
+                        <p>By making the open state default for when :checked isn't detected, we can make this system
+                            accessable for browsers that don't recognize :checked. The fallback is simply an open accordion.
+                            The accordion can be manipulated with Javascript (if needed) by changing the "checked" property
+                            of the input element.</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" checked>
+                        <i></i>
+                        <span>Choose a Card</span>
+                        <p>By making the open state default for when :checked isn't detected, we can make this system
+                            accessable for browsers that don't recognize :checked. The fallback is simply an open accordion.
+                            The accordion can be manipulated with Javascript (if needed) by changing the "checked" property
+                            of the input element.</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" checked>
+                        <i></i>
+                        <span>Document Upload</span>
+                        <p>By making the open state default for when :checked isn't detected, we can make this system
+                            accessable for browsers that don't recognize :checked. The fallback is simply an open accordion.
+                            The accordion can be manipulated with Javascript (if needed) by changing the "checked" property
+                            of the input element.</p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        
+    </div>
+    <div class="footer">
+        
+    </div>
+</body>
+
+</html>
+<!-- &#10003; -->
+<!-- <div>
+                            <p class="p1">Credit Check</p>
+                            <p class="p2"><span >&#10003;</span></p>
+                        </div> 
+                        <div>
+                            <p class="p1">Shipping Address</p>
+                            <p class="p2">68 West Side Avenue<br> LIBERTY,West Verginia</p>
+                        </div> 
+                        <div>
+                            <p class="p1">Bill Date</p>
+                            <p class="p2">&#10003;</p>
+                        </div>    
+                        <div>
+                            <p class="p1">Credit Limit</p>
+                            <p class="p2">&#10003;</p>
+                        </div>  -->

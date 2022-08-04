@@ -1,0 +1,160 @@
+.nav-bar{
+
+    height:40px ;
+    width: 100%;
+    background-color: black;
+  }
+  
+  .banner {
+    position: relative;
+    margin: 25px;
+    margin-bottom: 35px;
+    
+    
+  }
+  #banner{
+    position: relative;
+    height:350px;
+   
+    
+   
+  }
+  .banner-show{
+    max-height: 350px;
+    transition: all 1s linear;
+  }
+
+  .banner-hide{
+    max-height: 0px;
+    transition: all 1s linear;
+  }
+  #banner div{
+
+    width: 100%;
+    max-height:100%;
+  }
+  
+  .banner div img{
+    width: 100%;
+    max-height:100%;
+    border-radius: 5px;
+  }
+  .banner-txt{
+
+    position: absolute;
+    max-width: 40%;
+    top: 20%;
+    left: 0%;
+    padding:5px;
+    text-align: justify;
+    color:white;
+    font-weight: 400;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: large;
+    margin:5px;
+  }
+  .banner-hdr{
+    position: absolute;
+    max-width: 40%;
+    top: 1%;
+    left: 0%;
+    padding:5px;
+    text-align: justify;
+    color:white;
+ 
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  
+    margin:5px;
+  }
+
+  .banner-sh{
+    position: absolute;
+    bottom: 1%;
+    left: 0%;
+    max-width: 25px;
+    max-height: 25px;
+    margin:5px;
+    transition: all 1s linear;
+  }
+  
+  .banner-btn{
+    position: absolute;
+    bottom: 10%;
+    left: 0%;
+    
+    margin:10px;
+
+    color:white;
+    border-color: #6c757d;
+
+    background-color: transparent;
+    
+  font-weight: 400;
+
+  text-align: center;
+  vertical-align: middle;
+
+
+
+  border: 1px solid ;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  .banner-btn:hover{
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+  .main{
+    display: flex;
+  }
+  
+  .sidebar{
+    flex:1;
+    height:1600px;
+    background-color: rgb(235, 230, 230);
+    overflow:scroll;
+    transition: all 1s linear;
+  
+  }
+  
+  .second{
+    flex:5;
+    padding:20px;
+    transition: all 1s linear;
+  }
+  .second2{
+    flex:15;
+    transition: all 1s linear;
+  
+   
+  
+  }
+  .sidebar2{
+    flex:0.5;
+    transition: all 1s linear;
+  }
+  .sidebar2 pre{
+  display: none;
+  }
+
+  .summary-main{
+    display:flex;
+  }
+  .box1{
+    flex:1;
+  }
+  .box2{
+    flex:2;
+  }
+
+  .thankyou h1{
+    text-align:center;
+    font-size:45px;
+    color:#f88e86;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }

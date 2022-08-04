@@ -1,0 +1,133 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans",sans-serif;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all .2s linear;
+  text-transform: capitalize;
+}
+
+
+.container{
+
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+width: 100vw;
+background-size: cover;
+background-position: center;
+
+}
+
+#open{
+  height: 50x;
+  width: 180px;
+  background: #fff;
+  color: #333;
+  font-size: 25px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  outline: none;
+  border: none;
+  box-shadow: 0 3px 5px rgba(0,0,0,.3);
+
+}
+
+#open :hover{
+  letter-spacing: 4px;
+  opacity: .8;
+
+}
+.model-container{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  position:fixed;
+  top:0;left: 0;
+  background: rgba(0,0,0,.3); 
+  transform: scale(0);
+}
+.model-container .model{
+
+  height: 250px;
+  max-width: 350px;
+  margin: 0 10px;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  background: #fff;
+  position: relative;
+  
+  
+
+}
+.model-container .model h2{
+
+  text-align: left;
+  color: #333;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+
+}
+.model-container .model #txt1 {
+
+  padding: 10px 0px 10px 10px;
+  margin-top: 5px;
+  color: #333;
+  font-size: 15px;
+  margin-bottom: 7px;
+  width: 300px;
+  background-color: rgb(235, 230, 230);
+    border: 2px solid rgb(206, 203, 203); 
+    border-radius: 6px;
+
+}
+.model-container .model #txt2 {
+
+  color: #333;
+  padding: 10px 0px 10px 10px;
+  font-size: 15px;
+  margin-bottom: 15px;
+  width: 300px;
+  background-color: rgb(235, 230, 230);
+  border: 2px solid rgb(206, 203, 203);  
+    border-radius: 6px;
+
+}
+.model-container .model #btn1{
+
+  float: left;
+  color:white;
+  font-size: 13px;
+  background-color: red;
+  border-radius: 5px;
+  padding: 4px;
+  border: 2px solid red;
+  width: 80px;
+
+
+}
+.model-container .model #btn2{
+
+  
+  color: white;
+  font-size: 13px;
+  background-color: red;
+  border-radius: 5px;
+  padding: 4px;
+  width:80px;
+  border: 2px solid red;
+  margin-right: 45px;
+
+}
+.model-container .model h6{
+ margin-top: 40px;
+  text-align: right;
+
+}

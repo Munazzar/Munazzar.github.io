@@ -1,0 +1,312 @@
+
+body{
+    
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+.container1{
+
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   
+   clear: both;
+}
+.container1 h4{
+    font-size: 35px;
+    
+}
+.container1 h5{
+    font-size: 25px;
+    font-weight: 12px;
+    font-weight: lighter;
+}
+.container1 p{
+
+    font-size: 25px;
+}
+.container2{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+    min-height: 500px;
+    
+    clear: both;
+}
+.container2 .box1{
+    float: left;
+}
+.container2 .box2{
+    float: right;
+}
+
+.container2 .box1 h3{
+   
+    font-weight: 1000;
+}
+.container2 .box1 input{
+
+    height: 35px;
+    margin-top:10px;
+    background-color: rgb(235, 230, 230);
+    border: 2px solid rgb(235, 230, 230);
+    width: 350px;
+    border-radius: 6px;
+
+}
+.container2 .box1 #nxtbtn{
+    margin-top: 10px;
+    width:100px ;
+    height:35px;
+    background-color: red;
+    border-radius:6px;
+    color: white;
+    border: 2px solid rgb(252, 252, 252);
+}
+.container2 .box1 #nxtbtn a{
+  
+  text-decoration: none;
+}
+.container2 .box2 img{
+
+    height: 410px;
+    width: 410px;
+    margin-right: 220px;
+        
+    
+}
+
+/* progress bar   */
+.step-wizard {
+  
+  width: 41%;
+ 
+}
+.step-wizard-list{
+  background: white;
+  list-style-type: none;
+  display: flex;
+  position: relative;
+  z-index: 10;
+  padding: 0px;
+}
+
+.step-wizard-item{
+  padding: 0 0px;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -ms-flex-positive:1;
+  flex-grow: 1;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  min-width: 10;
+  position: relative;
+}
+.step-wizard-item + .step-wizard-item:after{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 19px;
+  background: grey;
+  width: 100%;
+  height: 2px;
+  transform: translateX(-50%);
+  z-index: -10;
+}
+.progress-count{
+  height: 40px;
+  width:40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 600;
+  margin: 0 auto;
+  position: relative;
+  z-index:10;
+  color: transparent;
+}
+.progress-count:after{
+  content: "";
+  height: 25px;
+  width: 25px;
+  background: white;
+  position: absolute;
+  left: 38%;
+  top: 51%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: -10;
+border: 2px solid rgba(0, 0, 0, 0.3);
+}
+.progress-count:before{
+  /* content: "";
+  height: 7px;
+  width: 20px;
+  border-left: 3px solid red;
+  border-bottom: 3px solid red;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -60%) rotate(-45deg);
+  transform-origin: center center; */
+} 
+
+
+.progress-label{
+  font-size: 14px;
+  margin-top: -15px;
+}
+.current-item .progress-count:before,
+.current-item ~ .step-wizard-item .progress-count:before{
+  display: none;
+}
+.current-item ~ .step-wizard-item .progress-count:after{
+  height:20px;
+  width:20px;
+}
+.current-item ~ .step-wizard-item .progress-label{
+  opacity: 0.5;
+}
+.current-item .progress-count:after{
+  background: red;
+  border: 2px solid red;
+}
+.current-item .progress-count{
+  
+}
+
+/*Accordion*/
+
+.flipIn, ul.wrapper-accordion li, .wrapper-accordion span {
+  animation: flipdown 0.5s ease both;
+}
+
+ul.wrapper-accordion {
+  list-style: none;
+  perspective: 900;
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+}
+
+ul.wrapper-accordion li{
+  position: relative;
+  padding: 0;
+  
+  margin-right:200px;
+  padding: 0px;
+  border-bottom: 2px solid #aaa8a8;
+  padding: 10px 0px;
+}
+
+ul.wrapper-accordion li:nth-of-type(1) {
+  animation-delay: 0.5s;
+}
+
+ul.wrapper-accordion li:nth-of-type(2) {
+  animation-delay: 0.75s;
+}
+
+ul.wrapper-accordion li:nth-of-type(3) {
+  animation-delay: 1s;
+}
+
+ul.wrapper-accordion li:nth-of-type(4) {
+  animation-delay: 1.25s;
+}
+
+
+ul.wrapper-accordion li:nth-of-type(5) {
+  animation-delay: 1.5s;
+}
+
+ul.wrapper-accordion li i {
+  position: absolute;
+  right: 0;
+}
+
+ul.wrapper-accordion li i:after {
+  content: "-";
+  position: absolute;
+  background-color: #ed1c24;
+  color: white;
+  width: 18px;
+  height: 17px;
+  border-radius: 50%;
+  font-size: 15px;
+  right: 5px;
+  text-align: center;
+  box-shadow: 0px 3px 4px #ccc;
+}
+
+ul.wrapper-accordion li input[type=checkbox]:checked ~ i:after {
+  content: "+";
+  position: absolute;
+  background-color: #ed1c24;
+  color: white;
+  width: 18px;
+  height: 17px;
+  border-radius: 50%;
+  font-size: 15px;
+  right: 5px;
+  text-align: center;
+  box-shadow: 0px 3px 4px #ccc;
+}
+
+ul.wrapper-accordion li input[type=checkbox] {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+}
+
+ul.wrapper-accordion p {
+  margin: 0px;
+  padding: 15px 5px;
+}
+ul.wrapper-accordion li input[type=checkbox]:checked ~ p {
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  transform: translate(0, 50%);
+  padding: 0px;
+}
+
+
+@keyframes flipdown {
+  0% {
+    opacity: 0;
+    transform-origin: top center;
+    transform: rotateX(-90deg);
+  }
+  5% {
+    opacity: 1;
+  }
+  80% {
+    transform: rotateX(8deg);
+  }
+  83% {
+    transform: rotateX(6deg);
+  }
+  92% {
+    transform: rotateX(-3deg);
+  }
+  100% {
+    transform-origin: top center;
+    transform: rotateX(0deg);
+  }
+}
+.footer{
+  height: 10px;
+    width: 100%;
+    background-color: red;
+    margin-top: 50px;
+    margin-right:200px;
+    
+}
+
+
