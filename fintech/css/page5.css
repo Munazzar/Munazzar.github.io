@@ -294,12 +294,13 @@ ul.wrapper-accordion li i {
 }
 
 ul.wrapper-accordion li i:after {
-  content: "-";
+  content: "^";
   position: absolute;
   background-color: #ed1c24;
   color: white;
-  width: 18px;
-  height: 17px;
+  width: 25px;
+  height: 18px;
+  padding-top:5px;
   border-radius: 50%;
   font-size: 15px;
   right: 5px;
@@ -312,8 +313,9 @@ ul.wrapper-accordion li input[type=checkbox]:checked ~ i:after {
   position: absolute;
   background-color: #ed1c24;
   color: white;
-  width: 18px;
-  height: 17px;
+  width: 25px;
+  height: 18px;
+  padding-top:3px;
   border-radius: 50%;
   font-size: 15px;
   right: 5px;
