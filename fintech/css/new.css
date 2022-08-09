@@ -121,7 +121,7 @@
   .sidebar{
     flex:1;
     
-    height:1600px;
+    max-height:2250px;
     background-color: rgb(235, 230, 230);
     overflow:scroll;
     transition: all 1s linear;
