@@ -399,6 +399,55 @@
 </body>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" >
+
+
+window.onload=function(){
+    window.adobeDataLayer.push({
+"event":"pageLoaded",
+"web": {
+"webPageDetails": {
+    "name":"us:en:personal:credit-cards:creditcard-application-form-review-details",
+    "server":"nextrow-publish.adobesandbox.com",
+    "siteSection":"personal",
+    "isErrorPage":false,
+    "pageViews": {
+                        "value":1
+                     }
+              }
+},
+"_spnam": {
+"pageInfo": {
+    "type": "form",
+    "siteSubSection":"credit-cards",
+    "previousPage":"us:en:personal:credit-cards",
+    "previousURL":"https://nextrow-publish.adobesandbox.com/content/nr_finance/us/en/personal/credit-cards.html",
+    "language":"English"
+    },
+"formDetails": {
+    "form": {
+            "type":"application-form",
+            "name":"creditcard-application-form"
+                     },
+"formStep": {
+            "name":"review-details",                
+            "number":"6",                        
+            "step5": {
+                    "value":1
+                        }
+                     },
+    "product": [ {
+            "category":"creditcard"
+                     } ]
+              }
+}
+});
+
+
+};
+
+
+
+
 var cookies=document.cookie;
 // console.log(cookies);
 var cookies_arr=cookies.split(";")
