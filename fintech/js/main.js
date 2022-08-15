@@ -14,6 +14,8 @@ function sideBar(){
     }
     
 
+    console.log(document.cookie);
+
 
 if(window.XMLHttpRequest)
 				{
@@ -31,7 +33,7 @@ if(window.XMLHttpRequest)
 				{
 					value=obj.responseText;
                     op=JSON.stringify(JSON.parse(value),null,2)
-                    console.log(op);
+                    // console.log(op);
                     document.getElementById("api_output").innerHTML=op;
 
 
@@ -62,7 +64,105 @@ if(window.XMLHttpRequest)
                     }
 
                     function salary(){
-                        range=document.getElementById("myrange").value;
+                        range=document.getElementById("ann-inc").value;
                         document.getElementById("rangeval").innerHTML=range;
                     }
                         
+
+                    function formNow(){
+                      var form_now = document.getElementById("form-now");
+                      if(form_now.classList.contains("show")){
+                       form_now.classList.remove("show");
+                      
+                       
+                           form_now.classList.add("hide-now");
+                      
+                       
+                       
+                      }
+                      else{
+                       form_now.classList.add("show");
+                       form_now.classList.remove("hide-now");
+                      
+                      }
+                   }
+
+                 function firstform(){
+                  var cookies = document.cookie.split(";");
+
+                  for (var i = 0; i < cookies.length; i++) {
+                      var cookie = cookies[i];
+                      var eqPos = cookie.indexOf("=");
+                      var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                  }
+                  var firstform=document.getElementById("firstform");
+                    var formlen =firstform.elements.length;
+                    console.log(formlen);
+                    var str=""
+                    for(i=0;i<formlen;i++){
+                      document.cookie=firstform.elements[i].id+"="+firstform.elements[i].value+";";
+                     
+                    }
+                    
+                    window.location.href="secondpage.html";
+                    
+                   
+                    
+
+                   }
+
+                   function secondform(){
+              
+                    var firstform=document.getElementById("secondform");
+                      var formlen =firstform.elements.length;
+                      console.log(formlen);
+                      var str=""
+                      for(i=0;i<formlen;i++){
+                        document.cookie=firstform.elements[i].name+"="+firstform.elements[i].value+";";
+                       
+                      }
+                      
+                      
+                      window.location.href="thirdpage.html";
+                     
+                      
+  
+                     }
+
+                     function thirdform(){
+              
+                      var firstform=document.getElementById("thirdform");
+                        var formlen =firstform.elements.length;
+                        console.log(formlen);
+                        var str=""
+                        for(i=0;i<formlen;i++){
+                          document.cookie=firstform.elements[i].name+"="+firstform.elements[i].value+";";
+                         
+                        }
+                        
+                        
+                        window.location.href="fifthpage.html";
+                       
+                        
+    
+                       }
+
+                       function collectData(){
+
+                        var finalform=document.getElementById("finalform");
+                                            var formlen =finalform.elements.length;
+                                            console.log(formlen);
+                                            var str=""
+                                            for(i=0;i<formlen;i++){
+                                              document.cookie=finalform.elements[i].name+"="+finalform.elements[i].value+";";
+                                             
+                                            }
+                                            
+                                            
+                                            window.location.href="thankyou.html";
+                    
+                    
+                    }
+
+                  

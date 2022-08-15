@@ -16,7 +16,10 @@ body {
 .wrapper {
   width: 100%;
   padding: 0px 0px;
-  
+ 
+}
+.sub-wrapper{
+  margin:0px 25px;
 }
 
 .split-wrapper {
@@ -63,6 +66,7 @@ body {
 .form-control select {
   border: 2px solid #d5d5d5;
   background-color:rgb(244, 242, 242);
+  margin-bottom: 10px;
   height: 40px;
   width: 65%;
   padding: 0 5px;
@@ -450,39 +454,55 @@ ul.wrapper-accordion li input[type=checkbox]:checked ~ p {
 }
 .container2{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding-left:0px ;
-    min-height: 500px;
-    width: 100%;
+    padding-right:400px ;
+   
+    width: 83%;
+    display: flex;
+    transition:all 0.3s linear;
+    border-radius: 10px;
+    border:1px solid rgba(0, 0, 0, 0);
     
-    clear: both;
+}
+.container2:hover{
+  transition:all 0.3s linear;
+/* box-shadow: 5px 10px 8px 3px rgb(235, 230, 230); */
+border:1px solid rgba(0, 0, 0, 0.3);
+
+    box-shadow: 0 0 5px 3px rgb(235, 230, 230);
+ 
 }
 .container2 .box1{
-    float: left;
-    width: 40%;
-    
+  margin-right:20px;
+  padding:5px;
+    flex:1;
+   
 }
 .container2 .box2{
-    float: right;
-    width: 55%;
-    
-    min-height: 500px;
+  margin:20px;
+    flex:1;
+   
+   
 }
 
 
 .container2 .box1 img{
-
+    display: inline-block;
     height: 100px;
-  margin-top:50px;
     width: 160px;
     
 
 }
 .container2 .box1 p{
-  margin-top:50px;
-    font-size: 20px;
-    float:right;
+  display: inline-block;
+  margin:40px 25px;
+  font-size: 20px;
+ 
+  height: 100px;
+  
+   
 }
 .container2 .box1 .btn{
+  display: inline-block;
     margin-right: 20px;
     width:100px ;
     margin-top: 0px;
@@ -491,7 +511,7 @@ ul.wrapper-accordion li input[type=checkbox]:checked ~ p {
     border-radius:6px;
     color: black;
     border: 1px solid rgb(196, 192, 192);
-    float:right;
+    float:center;
 }
 .container2 .box2 h2{
 
@@ -503,29 +523,32 @@ ul.wrapper-accordion li input[type=checkbox]:checked ~ p {
     color:greenyellow;
 }
 .container2 .box2 .div1{
-    width:500px;
-    min-height: 220px;
+ display: flex;
     
     
 }
+.container2 .box2 .div1 div{
+ flex:1;
+     
+     
+ }
 .container2 .box2 .p1{
     
-    float: left;
-    width:200px;
+    
     font-size: 20px;
     font-weight: 500;
-    margin:0px;
-    padding-top:15px;
+  
+   
     
 }
 .container2 .box2 .p2{
     
-    float: right;
-    width:300px;
+ 
+   
     font-size: 20px;
     
-    margin:0px;
-    padding-top:15px;
+   
+   
     
 }
 

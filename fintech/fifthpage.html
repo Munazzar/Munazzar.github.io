@@ -17,17 +17,20 @@
 
   
         <div class="sidebar sidebar2" id="mySidebar" >
-          <div style="text-align:right ;" onclick="sideBar()">
-      
-            <i class="fa fa-bars" aria-hidden="true" style="font-size:35px;padding: 5px;" ></i>
-      
-            
-          </div>
+         
           <pre id="api_output"></pre>
           
         </div>
         <div class="second second2" id="second">
-            <div class="nav-bar" id="nav-bar"></div>
+            <div class="nav-bar" id="nav-bar">
+                <div  onclick="sideBar()">
+
+                    <i class="fa fa-bars" aria-hidden="true" style="font-size:35px;padding: 5px; color:white;" ></i>
+              
+                    
+                  </div>
+
+            </div>
     <div class="banner">
       <div  id="banner" class="banner-show">
        <img src="assets/banner-4.jpg">
@@ -38,6 +41,7 @@
       <img class ="banner-sh" id="banner-sh" src="assets/show-green-24.png" onClick="banner()">
       </div>
 
+      <div style="padding:10px 25px;"><h1 >We.Finance - Credit Card Applicaiton Form</h1></div>
 
     <div class="wrapper">
         <section class="step-wizard">
@@ -72,6 +76,7 @@
                 </li>
             </ul>
         </section>
+        <div class="sub-wrapper">
         <ul class="wrapper-accordion">
             <li>
                 <input type="checkbox" checked>
@@ -119,92 +124,142 @@
                     of the input element.</p>
             </li>
             <li>
-                <input type="checkbox" unchecked>
+                <input type="checkbox" unchecked onclick="formNow()" >
                 <i></i>
                 <span>Review Details</span>
                 
             </li>
         </ul>
+        <div id="form-now" class="show">
         <div class="split-wrapper">
+            
             <p class="sub-heading">Please review your details(Review)</p>
-            <form class="form" id="form">
+            <form class="form" id="finalform">
                 <div class="split left">
                     <div class='form-control'>
-                        <input type="text" placeholder="Name" id='name'>
-                    </div>
-                    <div class='form-control'>
-                        <input type="text" placeholder="Date of Birth" id='birth'>
-                    </div>
+                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
+                </div>
 
-                    <div class='form-control'>
-                        <input type="text" placeholder="some data from MX" id='data'>
-                    </div>
+                <div class='form-control'>
 
-                    <div class='form-control'>
-                        <input type="text" placeholder="card selected" id='card'>
-                    </div>
+                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+                </div>
 
-                    <div class='form-control'>
-                        <input type="text" placeholder="Name" id='name1'>
-                    </div>
+                <div class='form-control'>
+                    <input type="text" class="form-control" id="date_of_birth" name="date_of_birth" placeholder="Date of birth">
+                </div>
 
-                    <div class='form-control'>
-                        <input type="text" placeholder="Date of Birth" id='birth1'>
-                    </div>
+                <div class='form-control'>
+                    <input type="text" class="form-control" id="email_id" name="email_id" placeholder="Email ID">
 
-                    <div class='form-control'>
-                        <input type="text" placeholder="some data from MX" id='data1'>
-                    </div>
+                </div>
+                
+                <div class='form-control'>
+                    <input type="text" class="form-control" id="mobile_number" name="mobile_number" placeholder="Mobile Number">
+                </div>
 
-                    <div class='form-control'>
-                        <input type="text" placeholder="card selected" id='card1'>
-                    </div>
+                <div class="form-control">
+                    <input placeholder="What’s your total monthly instalment?" id="mty-ins" name="mty-ins" type="text">
+                </div>
+
+
+              
+
+                   
                 </div>
                 <div class="split right">
                     <div class='form-control'>
-                        <select>
-                            <option value="cards">qualified for cards</option>
+                        <select class="" placeholder="Occupation" name="occupation" id="occupation">
+                            <option value="" disabled selected>Occupation</option>
+                            <option value="Account Clerk">Accounts Clerk</option>
+                            <option value="Accountant">Accountant</option>
+                            <option value="Action Director">Action Director</option>
+                            <option value="Actor">Actor</option>
+                            <option value="Actress">Actress</option>
+                            <option value="Actuarial Analyst">Actuarial Analyst</option>
+                            <option value="Actuarist">Actuarist</option>
+                            <option value="Actuary">Actuary</option>
+                            <option value="Acupuncturist">Acupuncturist</option>
+                            <option value="Admin">Admin</option>
                         </select>
+                       
                     </div>
+                   
+                  
+                        <div class="form-control">
+                            <input name="an-inc" id="an-inc"
+                               placeholder= "Select Annual Income" type="number">
+                          
+                         
+                    </div>
+                   
                     <div class='form-control'>
-                        <select>
-                            <option value="cards">qualified for cards</option>
-                        </select>
-                    </div>
-                    <div class='form-control'>
-                        <select>
-                            <option value="cards">qualified for cards</option>
-                        </select>
-                    </div>
-                    <div class='form-control'>
-                        <input type="text" placeholder="card selected" id='card1'>
-                    </div>
+                        <select name="employment" id="employment">
+                            <option value="" disabled selected>Employment Type</option>
+                            <option value="Government Employee/ Civil Servant">Government Employee/ Civil Servant</option>
+                            <option value="Private Sector Employee">Private Sector Employee</option>
+                            <option value="Self-Employed With workers" > Self-Employed with Workers</option>
+                            <option value="Self-Employed Without workers" >Self-Employed Without workers</option>
 
-                    <div class='form-control'>
-                        <select>
-                            <option value="cards">qualified for cards</option>
                         </select>
                     </div>
                     <div class='form-control'>
-                        <select>
-                            <option value="cards">qualified for cards</option>
+                        <select name="sector" id="sector">
+                            <option value="" diabled selected>Employment Sector</option>
+                            <option value="Accommodation and Food Service Activities">Accommodation and Food Service Activities</option>
+                            <option value="Activities of Extraterritorial Organizations and Bodies">Activities of Extraterritorial Organizations and Bodies</option>
+                            <option value="Activities of Households as Employers">Activities of Households as Employers</option>
+                            <option value="Undifferentiated Goods and Services Producing Activities of Households for Own Use">Undifferentiated Goods and Services Producing Activities of Households for Own Use</option>
+                            <option value="Administrative and Support Service Activities">Administrative and Support Service Activities</option>
+                            <option value="Agriculture, Forestry and Fishing">Agriculture, Forestry and Fishing</option>
+                            <option value="Arts">Arts</option>
+                            <option value="Entertainment and Recreation">Entertainment and Recreation</option>
+                            <option value="Construction">Construction</option>
+                            <option value="Education">Education</option>
+
                         </select>
                     </div>
-                    <div class='form-control'>
-                        <select>
-                            <option value="cards">qualified for cards</option>
-                        </select>
-                    </div>
-                    <div class='form-control'>
-                        <select>
-                            <option value="cards">Qualified for cards</option>
-                        </select>
-                    </div>
+                   
+
+                    <div class="form-control">
+                        <label>Do you have any financial obligations with non-banks? </label>
+                        <label class="switch">
+                            <input type="checkbox" value="checked" name="obligation" id="obligation">
+                            <span class="slider round"></span>
+                          </label>
+                        </div>
+                        
+                        
+                       
+                      
+                        <div class='form-control' style="padding-top:5px ;">
+                            <select name="obligationtype" id="obligationtype">
+                                <option value="" diabled selected>Obligation Type</option>
+                                <option value="House Loan">House Loan</option>
+                                <option value="Personal Loan">Personal Loan</option>
+                                <option value="Car Loan">Car Loan</option>
+                                </select>
+                                </div>
+
+                                <div class="form-control">
+                                    <input placeholder="Amount in USD" name="amt" id="amt" type="text">
+                                </div>
+
+
+                               
+                               
+
+
+
+
+
+
+
                 </div>
                 <!-- <button type="button">EDIT ➔</button>
                 <button type="button" id="complete"><a href="sixthpage.html">COMPLETE ➔</a></button> -->
 
-            </form>
+     
             <section>
                
             </section>
@@ -212,35 +267,9 @@
 
 
         <div class="split-wrapper">
-            <p class="sub-heading">Application Summary</p>
-            <form class="form" id="form">
-                <div class="split left">
-                    <div class='form-control'>
-                        <input type="text" placeholder="Andrea" id='name'>
-                    </div>
-                    <div class='form-control'>
-                        <input type="text" placeholder="03/05/1990" id='birth'>
-                    </div>
-
-                    <div class='form-control'>
-                        <input type="text" placeholder="Visa International Card" id='data'>
-                    </div>
-
-                    
-                </div>
-                <div class="split right">
-                    <div class='form-control'>
-                        <input type="text" placeholder="Rodriguez" id='card1'>
-                    </div>
-                    <div class='form-control'>
-                        <input type="text" placeholder="West Side Avenue" id='card1'>
-                    </div>
-                    <div class='form-control'>
-                        <input type="text" placeholder="West Verginia" id='card1'>
-                    </div>
-                    
-                </div>
-            </form>
+            <p class="sub-heading">Credit Card Summary</p>
+           
+             
             <div class="container2">
         
                 <div class="box1">
@@ -252,33 +281,106 @@
                     
                 
                 <div class="box2">
-                    <h2>Order Summary<h2>
+                   
                         <div class="div1">
-                            <p class="p1">Credit Check</p>
-                            <p class="p2"><span id="check">&#10003;</span></p>
-                            <p class="p1">Shipping Address</p>
-                            <p class="p2">68 West Side Avenue<br> LIBERTY,West Verginia</p>
-                            <p class="p1" style="padding-top:40px;" >Bill Date</p>
+                            <div>
+                                <p class="p1">Credit Check</p>
+                                <p class="p1" >Bill Date</p>
+                                <p class="p1">Credit Limit</p>
+                            </div>
+                            <div>
+
+                                <p class="p2"><span id="check">&#10003;</span></p>
+                            
                             <p class="p2" >20/05/2022</p>
-                            <p class="p1">Credit Limit</p>
+                            
                             <p class="p2" >$50000</p>
+                            </div>
+                           
+                            
                             
 
                         </div> 
                         
-                         <div>
-                               <p id="checkbox-para"><input type="checkbox"> Submiting this form your agree to our<strong><br> Privacy policy and Terms & Conditions</strong></p> 
-                               <a href="thankyou.html"> <button >SUBMIT➔</button></a>
-                            </div>
-
+                        
                     
                     
                 </div>
                 
-        
+                    
+
             </div>
-            
-          
+           
+        </div>
+        <div>
+            <p class="sub-heading">Confirm Shipping Address:</p>
+        </div>
+        <div class="form-control" style="display:flex;width:94%;">
+            <div style="flex:1"><input placeholder="Street Address" name="streetAddress"></div>
+            <div style="flex:1"><input placeholder="City" name="city"> </div>
+            <div style="flex:1"> <select name="state" id="state" >
+
+                <option value="" selected disabled>State</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District Of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+        </select></div>
+           
+        </div>
+        <div>
+            <p ><input type="checkbox" name="terms" id="terms"> <strong>Submitting this form your agree to our Privacy policy and <a href="#">Terms & Conditions</a></strong></p>
+        </form> 
+           <button onClick="collectData()">SUBMIT➔</button>
+         </div>
+        </div>
         </div>
 
         
@@ -290,5 +392,99 @@
     </div>
 </body>
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" >
+var cookies=document.cookie;
+// console.log(cookies);
+var cookies_arr=cookies.split(";")
+for(var items of cookies_arr){
+    var item=items.split("=");
+    console.log("key:"+item[0].trim()+",value:"+item[1]);
+    if(item[0]!=null){
+        if(item[0].trim()=="on")
+        continue;
+
+        if(item[0].trim()=="obligation")
+        {
+            if (item[1].trim()=="on"){
+                document.getElementById(item[0].trim()).checked=true;
+            }
+            else{
+                document.getElementById(item[0].trim()).checked=false;
+            }
+            
+        }
+        
+        document.getElementById(item[0].trim()).value=item[1];
+    }
+    
+    
+   
+}
+
+
+
+</script>
+<style>
+    .switch {
+position: relative;
+display: inline-block;
+width: 46px;
+height: 25px;
+
+}
+
+.switch input { 
+opacity: 0;
+width: 0;
+height: 0;
+}
+
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 1px;
+bottom: 0;
+background-color: #ccc;
+-webkit-transition: .4s;
+transition: .4s;
+}
+
+.slider:before {
+position: absolute;
+content: "";
+height: 20px;
+width: 20px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+-webkit-transition: .4s;
+transition: .4s;
+}
+
+input:checked + .slider {
+background-color:red;
+}
+
+input:focus + .slider {
+box-shadow: 0 0 1px;
+}
+
+input:checked + .slider:before {
+-webkit-transform: translateX(20px);
+-ms-transform: translateX(20px);
+transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+border-radius: 34px;
+}
+
+.slider.round:before {
+border-radius: 50%;
+}
+  </style>
 
 </html>

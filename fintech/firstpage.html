@@ -22,17 +22,20 @@
 
   
   <div class="sidebar sidebar2" id="mySidebar" >
-    <div style="text-align:right ;" onclick="sideBar()">
-
-      <i class="fa fa-bars" aria-hidden="true" style="font-size:35px;padding: 5px;" ></i>
-
-      
-    </div>
-    <!-- <pre id="api_output"></pre> -->
+    
+    <pre id="api_output" style="display: none;"></pre>
     
   </div>
   <div class="second second2" id="second">
-    <div class="nav-bar" id="nav-bar"></div>
+    <div class="nav-bar" id="nav-bar">
+      <div  onclick="sideBar()">
+
+        <i class="fa fa-bars" aria-hidden="true" style="font-size:35px;padding: 5px; color:white;" ></i>
+  
+        
+      </div>
+
+    </div>
     <div class="banner">
       <div  id="banner" class="banner-show">
        <img src="assets/banner-4.jpg">
@@ -42,6 +45,10 @@
     </div>
       <img class ="banner-sh" id="banner-sh" src="assets/show-green-24.png" onClick="banner()">
       </div>
+    
+      <div style="padding:10px 25px;"><h1 >We.Finance - Credit Card Applicaiton Form</h1></div>
+      
+
   <section class="step-wizard">
     <ul class="step-wizard-list">
         <li class="step-wizard-item current-item">
@@ -80,7 +87,7 @@
       <section>
     <ul class="wrapper-accordion">
       <li>
-        <input type="checkbox" unchecked>
+        <input type="checkbox" unchecked onclick="formNow()">
         <i></i>
         <span>Personal Details</span>
        
@@ -91,11 +98,11 @@
 
   
   
-
+  <div class="show" id="form-now">
     <div class="container1">
       
-        <h4 style="margin: 15px 0px;">We, Finance Credit Card Applicaiton Form</h4>
-                            <p style="margin: 5px 0px;">Credit Card Application Form</p>
+       
+                            <!-- <p style="margin: 5px 0px;">Credit Card Application Form</p> -->
                             <p style="margin: 5px 0px;">Please fill this form out so that we can issue a credit card directly online.
                                 If you are not able to complete then we will reach out.
 
@@ -106,13 +113,16 @@
         
         <div class="box1">
                 <h3>Step 1/5 Personal Details</h3>
-              <input type="text" class="form-control" id="first_name" placeholder="First Name"><br>
+                <form id="firstform">
+              <input type="text" class="form-control" id="first_name" placeholder="First Name" required><br>
               <input type="text" class="form-control" id="last_name" placeholder="Last Name"><br>
               <input type="text" class="form-control" id="date_of_birth" placeholder="Date of birth"><br>
-              <input type="text" class="form-control" id="email_id" placeholder="Email ID"><br>
-              <input type="text" class="form-control" id="address" placeholder="Address"><br>
+              <input type="email" class="form-control" id="email_id" placeholder="Email ID"><br>
+              <!-- <input type="text" class="form-control" id="address" placeholder="Address"><br> -->
               <input type="text" class="form-control" id="mobile_number" placeholder="Mobile Number"><br>
-              <button id="nxtbtn" type="submit"><a href="secondpage.html" style="color: white;">NEXT ➔</a></button>
+            </form>
+              
+              <button onClick="firstform()" id="nxtbtn"  >NEXT ➔</button>
             </div>
         
         <div class="box2">
@@ -120,6 +130,7 @@
 
         </div>
 
+    </div>
     </div>
     
       <section>

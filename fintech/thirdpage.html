@@ -1,34 +1,307 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
+<html>
+
+<head>
     <meta charset="utf-8">
-    <title>Page3</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/page3.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Page2</title>
+    <link rel="stylesheet" href="css/page2.css">
+    <link rel="stylesheet" href="css/new.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
-  </head>
-  <body>
-    <div class="container">
-        <button id="open">Find out Now</button>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="main">
+
+  
+        <div class="sidebar sidebar2" id="mySidebar" >
+         
+          <!-- <pre id="api_output"></pre> -->
+          
+        </div>
+        <div class="second second2" id="second">
+          <div class="nav-bar" id="nav-bar">
+            <div  onclick="sideBar()">
+
+                <i class="fa fa-bars" aria-hidden="true" style="font-size:35px;padding: 5px; color:white;" ></i>
+          
+                
+              </div>
+
+
+          </div>
+          <div class="banner">
+            <div  id="banner" class="banner-show">
+             <img src="assets/banner-4.jpg">
+             <h1 class="banner-hdr" id="banner-hdr">Personal Loan</h1>
+             <p class="banner-txt" id="banner-txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+             <button class="banner-btn" id="apply-now">Apply Now</button>
+          </div>
+            <img class ="banner-sh" id="banner-sh" src="assets/show-green-24.png" onClick="banner()">
+            </div>
+
+            <div style="padding:10px 25px;"><h1 >We.Finance - Credit Card Applicaiton Form</h1></div>
+    <div class="wrapper">
+     
+        <section class="step-wizard1">
+            <ul class="step-wizard-list" >
+                <li class="step-wizard1-item" >
+                    <span class="progress-count" id="marked">1</span>
+                </li>
+
+                <li class="step-wizard1-item ">
+                    
+                    <span class="progress-count" id="marked">2</span>
+                </li>
+
+                <li class="step-wizard1-item current-item">
+                    <span class="progress-label1">Step 03</span>
+                    <span class="progress-count" >3</span>
+                </li>
+
+                <li class="step-wizard1-item">
+                    <span class="progress-count">4</span>
+                </li>
+
+                <li class="step-wizard1-item">
+                    <span class="progress-count">5</span>
+                </li>
+
+                <li class="step-wizard1-item">
+                    <span class="progress-count">6</span>
+                </li>
+
+            </ul>
+        </section>
+        <section>
+        <ul class="wrapper-accordion" style="padding-left:20px; padding-right:20px;">
+            <li>
+                <input type="checkbox" checked>
+                <i></i>
+                <span>Personal Details</span>
+                <p>This page was written in HTML and CSS. The CSS was compiled from SASS. I used Normalize as my
+                    CSS
+                    reset and -prefix-free to save myself some headaches. I haven't quite gotten the hang of
+                    Slim
+                    for compiling into HTML, but someday I'll use it since its syntax compliments that of SASS.
+                    Regardless, this could all be done in plain HTML and CSS.</p>
+            </li>
+            <li>
+                <input type="checkbox" checked>
+                <i></i>
+                <span>Employment Details</span>
+              
+            </li>
+            <li>
+                <input type="checkbox" unchecked onclick="formNow()">
+                <i></i>
+                <span>Financial Obligation</span>
+               
+            </li>
+        </ul>
+    </section>
+        <div class="split-wrapper" >
+            <div class="show" id="form-now">
+            <p class="sub-heading">Please fill this step with your financial information,so <br>
+                that we can offer you the best credit limit & rewards.</p>
+            <form class="form" id="thirdform">
+                <div class="split left">
+                    <div class="d-inline">
+                    <label>Do you have any financial obligations with non-banks? </label>
+                    <label class="switch">
+                        <input type="checkbox" checked id="obligation" name="obligation">
+                        <span class="slider round"></span>
+                      </label>
+                    </div>
+                    
+                    
+                   
+                  
+                    <div class='form-control' style="padding-top:5px ;">
+                        <select name="obligationtype">
+                            <option value="" diabled selected>Obligation Type</option>
+                            <option value="House Loan">House Loan</option>
+                            <option value="Personal Loan">Personal Loan</option>
+                            <option value="Car Loan">Car Loan</option>
+                            </select>
+                            </div>
+                   
+
+
+                            
+
+                </div>
+
+                <div class="split right">
+                
+                    
+                    <div class="" style="padding-top:5px ;">
+                        <div class="form-control">
+                            <input placeholder="What’s your total monthly installment?" id="mty-ins" name="mty-ins">
+                        </div>
+
+
+                        <div class="form-control">
+                            <input placeholder="Amount in USD" id="amt" name="amt">
+                        </div>
+                       
+                    
+                    </div>
+                 
+
+                </div>
+                
+                <div class="w-100 clear"><button id="open" onclick="thirdform()" type="button">NEXT➔</button></div>
+                
+            </form>
+            </div>
+        
+            <section style="margin-top:25px;">
+                <ul class="wrapper-accordion" >
+                 
+                   
+                    <li>
+                        <input type="checkbox" checked>
+                        <i></i>
+                        <span>Choose a card</span>
+                        <p>By making the open state default for when :checked isn't detected, we can make this system
+                            accessable for browsers that don't recognize :checked. The fallback is simply an open
+                            accordion.
+                            The accordion can be manipulated with Javascript (if needed) by changing the "checked"
+                            property
+                            of the input element.</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" checked>
+                        <i></i>
+                        <span>Document upload</span>
+                        <p>By making the open state default for when :checked isn't detected, we can make this system
+                            accessable for browsers that don't recognize :checked. The fallback is simply an open
+                            accordion.
+                            The accordion can be manipulated with Javascript (if needed) by changing the "checked"
+                            property
+                            of the input element.</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" checked>
+                        <i></i>
+                        <span>Review Details</span>
+                        <p>By making the open state default for when :checked isn't detected, we can make this system
+                            accessable for browsers that don't recognize :checked. The fallback is simply an open
+                            accordion.
+                            The accordion can be manipulated with Javascript (if needed) by changing the "checked"
+                            property
+                            of the input element.</p>
+                    </li>
+                </ul>
+            </section>
+        </div>
     </div>
-    <div class="model-container">
-      <div class="model">
-        <h2>Login</h2>
-        <input  id="txt1" type="text" name="username" placeholder="Email ID"><br>
-        <input  id="txt2" type="password" name="password" placeholder="Password"><br>
-        <button id="btn1" >SUBMIT➔</button>
-        <button id="btn2" >RESET➔</button>
-        <h6>*Powered by MX platform</h6>
-      </div>
+    <div class="footer">
 
     </div>
+</div>
+</div>
+  
 
-
-    
+<script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript">
-      $("#open").click(function(){
-        $(".model-container,.text").css('transform','scale(1)');
-      });
-    </script>
-  </body>
+        
+        
+        function btn1call(){
+          $(".model-container,.text").css('transform','scale(1)');
+          $(".step-wizard1").css('opacity','0.8');
+            
+         }
+         function btn2call(){
+            $(".model-container,.text").css('transform','scale(0)');
+            $(".model-container2,.text").css('transform','scale(1)');
+          
+            
+         }
+
+     
+
+
+
+
+
+      </script>
+      <script>
+    
+    $(".close-img").click(function(){
+            $(".model-container").css('transform','scale(0)');
+            $(".model-container2").css('transform','scale(0)');
+       
+});
+
+
+      </script>
+
+      <style>
+        .switch {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 25px;
+  margin:15px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 1px;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color:red;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+      </style>
+</body>
+
 </html>

@@ -202,7 +202,7 @@ button {
   width: 20px;
   border-left: 3px solid #ed1c24;
   border-bottom: 3px solid #ed1c24;
-  position: absolute;
+  position: absolute; 
   left: 50%;
   top: 40%;
   transform: translate(-50%, -60%) rotate(-45deg);
@@ -253,7 +253,7 @@ button {
 ul.wrapper-accordion {
   list-style: none;
   perspective: 900;
-  padding: 0;
+  
   margin: 0;
   margin-top: 20px;
 }
@@ -262,7 +262,7 @@ ul.wrapper-accordion li{
   position: relative;
   padding: 0;
   margin: 0;
-  padding: 0px;
+  padding: 0px 15px;
   border-bottom: 2px solid #aaa8a8;
   padding: 10px 0px;
 }
