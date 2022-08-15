@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/new.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://assets.adobedtm.com/4ef014d90ea4/f17881fecebf/launch-300ebbf87cf6-development.min.js" async></script>
 </head>
 
 <body>
@@ -53,7 +54,55 @@
     </div>
     </div>
 </body>
-<script type="text/javascript" src="js/main.js"></script>
 
+<script type="text/javascript">
+window.onload=function(){
+  window.adobeDataLayer.push({
+"event":"pageLoaded",
+"web": {
+"webPageDetails": {
+    "name":"us:en:personal:credit-cards:creditcard-application-form-thank-you",
+    "server":"nextrow-publish.adobesandbox.com",
+    "siteSection":"personal",
+    "isErrorPage":false,
+    "pageViews": {
+                        "value":1
+                     }
+              }
+},
+"_spnam": {
+"pageInfo": {
+    "type": "form",
+    "siteSubSection":"credit-cards",
+    "previousPage":"us:en:personal:credit-cards",
+    "previousURL":"https://nextrow-publish.adobesandbox.com/content/nr_finance/us/en/personal/credit-cards.html",
+    "language":"English"
+    },
+"formDetails": {
+    "form": {
+            "type":"application-form",
+            "name":"creditcard-application-form",
+            "status":"Processed",
+            "refNumber":"12345678"
+                     },
+"formStep": {
+            "name":"thank-you",                
+            "number":"7"
+                     },
+    "product": [ {
+            "category":"creditcard",
+            "name":"your-creditcard"
+                     } ],
+    "completes": {
+                        "value":1
+                     }
+              }
+}
+});
+
+
+};
+
+</script>
 
 </html>

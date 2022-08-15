@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/new.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://assets.adobedtm.com/4ef014d90ea4/f17881fecebf/launch-300ebbf87cf6-development.min.js" async></script>
 </head>
 
 <body>
@@ -41,7 +42,7 @@
       <img class ="banner-sh" id="banner-sh" src="assets/show-green-24.png" onClick="banner()">
       </div>
 
-      <div style="padding:10px 25px;"><h1 >We.Finance - Credit Card Applicaiton Form</h1></div>
+      <div style="padding:10px 25px;"><h1 >We.Finance - Credit Card Application Form</h1></div>
 
     <div class="wrapper">
         <section class="step-wizard">
@@ -379,6 +380,11 @@
             <p ><input type="checkbox" name="terms" id="terms"> <strong>Submitting this form your agree to our Privacy policy and <a href="#">Terms & Conditions</a></strong></p>
         </form> 
            <button onClick="collectData()">SUBMIT➔</button>
+
+           <div class="alert" id="alert_box" style="display:none;margin:5px;">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <strong>Alert!</strong> Please fill out all the fields.
+          </div>
          </div>
         </div>
         </div>
@@ -421,6 +427,50 @@ for(var items of cookies_arr){
    
 }
 
+
+window.onload=function(){
+    window.adobeDataLayer.push({
+"event":"pageLoaded",
+"web": {
+"webPageDetails": {
+    "name":"us:en:personal:credit-cards:creditcard-application-form-review-details",
+    "server":"nextrow-publish.adobesandbox.com",
+    "siteSection":"personal",
+    "isErrorPage":false,
+    "pageViews": {
+                        "value":1
+                     }
+              }
+},
+"_spnam": {
+"pageInfo": {
+    "type": "form",
+    "siteSubSection":"credit-cards",
+    "previousPage":"us:en:personal:credit-cards",
+    "previousURL":"https://nextrow-publish.adobesandbox.com/content/nr_finance/us/en/personal/credit-cards.html",
+    "language":"English"
+    },
+"formDetails": {
+    "form": {
+            "type":"application-form",
+            "name":"creditcard-application-form"
+                     },
+"formStep": {
+            "name":"review-details",                
+            "number":"6",                        
+            "step5": {
+                    "value":1
+                        }
+                     },
+    "product": [ {
+            "category":"creditcard"
+                     } ]
+              }
+}
+});
+
+
+};
 
 
 </script>

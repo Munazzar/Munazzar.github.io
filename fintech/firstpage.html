@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/page1.css">
     <link rel="stylesheet" href="css/new.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- 
+    <script src="https://assets.adobedtm.com/4ef014d90ea4/f17881fecebf/launch-300ebbf87cf6-development.min.js" async></script>
 </head>
 <body>
   <div class="main">
@@ -46,7 +46,7 @@
       <img class ="banner-sh" id="banner-sh" src="assets/show-green-24.png" onClick="banner()">
       </div>
     
-      <div style="padding:10px 25px;"><h1 >We.Finance - Credit Card Applicaiton Form</h1></div>
+      <div style="padding:10px 25px;"><h1 >We.Finance - Credit Card Application Form</h1></div>
       
 
   <section class="step-wizard">
@@ -123,8 +123,15 @@
             </form>
               
               <button onClick="firstform()" id="nxtbtn"  >NEXT ➔</button>
+              <div class="alert" id="alert_box" style="display:none;">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <strong>Alert!</strong> Please fill out all the fields.
+              </div>
             </div>
         
+           
+            
+
         <div class="box2">
             <img  id="img1" src="assets/img1.png" alt="img1 is here">
 
@@ -198,7 +205,47 @@
           $(this).children(".icon").text("^");
         });
 
-      
+        window.onload = function () {
+          window.adobeDataLayer.push({
+"event":"pageLoaded",
+"web": {
+"webPageDetails": {
+    "name":"us:en:personal:credit-cards:creditcard-application-form-personal-details",
+    "server":"nextrow-publish.adobesandbox.com",
+    "siteSection":"personal",
+    "isErrorPage":false,
+    "pageViews": {
+                        "value":1
+                     }
+              }
+},
+"_spnam": {
+"pageInfo": {
+    "type": "form",
+    "siteSubSection":"credit-cards",
+    "previousPage":"us:en:personal:credit-cards",
+    "previousURL":"https://nextrow-publish.adobesandbox.com/content/nr_finance/us/en/personal/credit-cards.html",
+    "language":"English"
+    },
+"formDetails": {
+    "form": {
+            "type":"application-form",
+            "name":"creditcard-application-form"
+                     },
+"formStep": {
+            "name":"personal-details",                
+            "number":"1"
+                     },
+    "product": [ {
+            "category":"creditcard"
+                     } ],
+    "loads": {
+                        "value":1
+                     }
+              }
+}
+});
+        };
 
   
 

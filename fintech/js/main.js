@@ -101,10 +101,46 @@ if(window.XMLHttpRequest)
                     console.log(formlen);
                     var str=""
                     for(i=0;i<formlen;i++){
+                      if(firstform.elements[i].value==""){
+                        document.getElementById("alert_box").style.display="block";
+                        window.adobeDataLayer.push({
+                          "event":"applicationError",
+                          "_spnam": {
+                          "formDetails": {
+                              "form": {
+                                      "type":"application-form",
+                                      "name":"creditcard-application-form"
+                                               },
+                              "formStep": {
+                                      "name":"personal-details",
+                                      "number":"1"
+                                               },
+                              "product": [ {
+                                      "category":"creditcard",
+                                      "name":"cashback-creditcard"
+                                               } ]
+                                        },
+                              "errorInfo": [ {
+                                  "type":"form-fieldvalidation-error",
+                                  "fieldName":"last-name",
+                                  "message":"last name cannot be empty",
+                              "errors": {
+                                                  "value":1
+                                               }
+                                  } ]    
+                          }
+                          });
+                        document.getElementById(firstform.elements[i].id).focus();
+
+
+                     
+
+                        return 
+                      }
                       document.cookie=firstform.elements[i].id+"="+firstform.elements[i].value+";";
                      
                     }
-                    
+                    document.getElementById("alert_box").style.display="none";
                     window.location.href="secondpage.html";
                     
                    
@@ -119,11 +155,55 @@ if(window.XMLHttpRequest)
                       console.log(formlen);
                       var str=""
                       for(i=0;i<formlen;i++){
+                        
+                        if(firstform.elements[i].type=="button"){
+                          continue;
+                          
+                        }
+
+                        if(firstform.elements[i].value==""){
+                          document.getElementById("alert_box").style.display="block";
+                          console.log(firstform.elements[i].type)
+                          window.adobeDataLayer.push({
+                            "event":"applicationError",
+                            "_spnam": {
+                            "formDetails": {
+                                "form": {
+                                        "type":"application-form",
+                                        "name":"creditcard-application-form"
+                                                 },
+                                "formStep": {
+                                        "name":"personal-details",
+                                        "number":"1"
+                                                 },
+                                "product": [ {
+                                        "category":"creditcard",
+                                        "name":"cashback-creditcard"
+                                                 } ]
+                                          },
+                                "errorInfo": [ {
+                                    "type":"form-fieldvalidation-error",
+                                    "fieldName":"last-name",
+                                    "message":"last name cannot be empty",
+                                "errors": {
+                                                    "value":1
+                                                 }
+                                    } ]    
+                            }
+                            });
+                          document.getElementById(firstform.elements[i].id).focus();
+
+
+
+
+                          
+                          return 
+                        }
                         document.cookie=firstform.elements[i].name+"="+firstform.elements[i].value+";";
                        
                       }
                       
-                      
+                      document.getElementById("alert_box").style.display="none";
                       window.location.href="thirdpage.html";
                      
                       
@@ -137,11 +217,47 @@ if(window.XMLHttpRequest)
                         console.log(formlen);
                         var str=""
                         for(i=0;i<formlen;i++){
+                          if(firstform.elements[i].value==""){
+                            console.log(firstform.elements[i].type);
+                            document.getElementById("alert_box").style.display="block";
+
+                            window.adobeDataLayer.push({
+                              "event":"applicationError",
+                              "_spnam": {
+                              "formDetails": {
+                                  "form": {
+                                          "type":"application-form",
+                                          "name":"creditcard-application-form"
+                                                   },
+                                  "formStep": {
+                                          "name":"personal-details",
+                                          "number":"1"
+                                                   },
+                                  "product": [ {
+                                          "category":"creditcard",
+                                          "name":"cashback-creditcard"
+                                                   } ]
+                                            },
+                                  "errorInfo": [ {
+                                      "type":"form-fieldvalidation-error",
+                                      "fieldName":"last-name",
+                                      "message":"last name cannot be empty",
+                                  "errors": {
+                                                      "value":1
+                                                   }
+                                      } ]    
+                              }
+                              });
+
+
+                            document.getElementById(firstform.elements[i].id).focus();
+                            return 
+                          }
                           document.cookie=firstform.elements[i].name+"="+firstform.elements[i].value+";";
                          
                         }
                         
-                        
+                        document.getElementById("alert_box").style.display="none";
                         window.location.href="fifthpage.html";
                        
                         
@@ -155,11 +271,91 @@ if(window.XMLHttpRequest)
                                             console.log(formlen);
                                             var str=""
                                             for(i=0;i<formlen;i++){
+                                              
+                                              if(finalform.elements[i].type=="button" || finalform.elements[i].type=="submit"){
+                                                continue;
+                                                
+                                              }
+                                              console.log(finalform.elements[i].type);
+                                              if(finalform.elements[i].type=="checkbox"){
+                                                  if(finalform.elements[i].checked==false){
+                                                    console.log(finalform.elements[i].type);
+                                                    document.getElementById("alert_box").style.display="block";
+
+
+                                                    window.adobeDataLayer.push({
+                                                      "event":"applicationError",
+                                                      "_spnam": {
+                                                      "formDetails": {
+                                                          "form": {
+                                                                  "type":"application-form",
+                                                                  "name":"creditcard-application-form"
+                                                                           },
+                                                          "formStep": {
+                                                                  "name":"personal-details",
+                                                                  "number":"1"
+                                                                           },
+                                                          "product": [ {
+                                                                  "category":"creditcard",
+                                                                  "name":"cashback-creditcard"
+                                                                           } ]
+                                                                    },
+                                                          "errorInfo": [ {
+                                                              "type":"form-fieldvalidation-error",
+                                                              "fieldName":"last-name",
+                                                              "message":"last name cannot be empty",
+                                                          "errors": {
+                                                                              "value":1
+                                                                           }
+                                                              } ]    
+                                                      }
+                                                      });
+
+                                                    document.getElementById(finalform.elements[i].id).focus();
+                                                    return 
+                                                  }
+                                              }
+                                              else if(finalform.elements[i].value==""){
+                                                console.log(finalform.elements[i].type);
+                                                document.getElementById("alert_box").style.display="block";
+
+
+                                                window.adobeDataLayer.push({
+                                                  "event":"applicationError",
+                                                  "_spnam": {
+                                                  "formDetails": {
+                                                      "form": {
+                                                              "type":"application-form",
+                                                              "name":"creditcard-application-form"
+                                                                       },
+                                                      "formStep": {
+                                                              "name":"personal-details",
+                                                              "number":"1"
+                                                                       },
+                                                      "product": [ {
+                                                              "category":"creditcard",
+                                                              "name":"cashback-creditcard"
+                                                                       } ]
+                                                                },
+                                                      "errorInfo": [ {
+                                                          "type":"form-fieldvalidation-error",
+                                                          "fieldName":"last-name",
+                                                          "message":"last name cannot be empty",
+                                                      "errors": {
+                                                                          "value":1
+                                                                       }
+                                                          } ]    
+                                                  }
+                                                  });
+                                                  
+                                                document.getElementById(finalform.elements[i].id).focus();
+                                                return 
+                                              }
                                               document.cookie=finalform.elements[i].name+"="+finalform.elements[i].value+";";
                                              
                                             }
                                             
-                                            
+                                            document.getElementById("alert_box").style.display="none";
                                             window.location.href="thankyou.html";
                     
                     
