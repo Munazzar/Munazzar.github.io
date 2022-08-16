@@ -363,7 +363,11 @@ if(window.XMLHttpRequest)
                                             }
 
                                             var oblig=new_data["obligation"]=="on"? true:false;
-                                            
+
+
+                                          
+
+
                                             var check_data={
                                               "event":"applicationProfileComplete",
                                               "person": {
@@ -393,14 +397,14 @@ if(window.XMLHttpRequest)
                                               },
                                               "_spnam": {
                                               "employmentDetails": {
-                                              "annualIncome":`${parseInt(new_data["an-inc"])*1000}`, //integer
+                                              "annualIncome":parseInt(new_data["an-inc"])*1000, //integer
                                               "occupation":`${new_data["occupation"]}`, //string
                                               "sector":`${new_data["sector"]}`, //string
                                               "type":`${new_data["employment"]}` //string
                                               },
                                               "financialObligations": {
                                               "isObligations":oblig, //boolean
-                                              "monthlyInstallment":`${parseInt(new_data["mty-ins"])}`, //integer
+                                              "monthlyInstallment":parseInt(new_data["mty-ins"]), //integer
                                               },
                                               "mxBankName": "Chase", //string
                                               "referenceNumber": "GTSJDB3324DSF" //string
@@ -409,7 +413,7 @@ if(window.XMLHttpRequest)
 
 
                                               console.log(check_data);
-
+                                                
                                           
                                             window.adobeDataLayer.push({
                                               "event":"applicationProfileComplete",
@@ -440,14 +444,14 @@ if(window.XMLHttpRequest)
                                               },
                                               "_spnam": {
                                               "employmentDetails": {
-                                              "annualIncome":`${parseInt(new_data["an-inc"])*1000}`, //integer
+                                              "annualIncome":parseInt(new_data["an-inc"])*1000, //integer
                                               "occupation":`${new_data["occupation"]}`, //string
                                               "sector":`${new_data["sector"]}`, //string
                                               "type":`${new_data["employment"]}` //string
                                               },
                                               "financialObligations": {
                                               "isObligations":oblig, //boolean
-                                              "monthlyInstallment":`${parseInt(new_data["mty-ins"])}`, //integer
+                                              "monthlyInstallment":parseInt(new_data["mty-ins"]), //integer
                                               },
                                               "mxBankName": "Chase", //string
                                               "referenceNumber": "GTSJDB3324DSF" //string
@@ -457,7 +461,8 @@ if(window.XMLHttpRequest)
 
                                             
                                             document.getElementById("alert_box").style.display="none";
-                                            window.location.href="thankyou.html";
+                                            setTimeout(() => {  window.location.href="thankyou.html"; }, 1000);
+                                            
                     
                     
                     }
