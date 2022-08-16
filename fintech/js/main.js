@@ -457,7 +457,7 @@ if(window.XMLHttpRequest)
 
                                             
                                             document.getElementById("alert_box").style.display="none";
-                                            // window.location.href="thankyou.html";
+                                            window.location.href="thankyou.html";
                     
                     
                     }
