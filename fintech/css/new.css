@@ -16,7 +16,7 @@
   }
   #banner{
     position: relative;
-    height:400px;
+    max-height:fit-content;
     
    
     
