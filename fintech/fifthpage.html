@@ -464,7 +464,7 @@ if(window.XMLHttpRequest)
 					value=obj.responseText;
                     op=JSON.stringify(JSON.parse(value),null,2)
                     // console.log(op);
-                    document.getElementById("api_output").innerHTML=op;
+                    
                     var account_data=JSON.parse(value);
                     process_response(account_data);
                         // console.log(account_data["account"]["available_credit"]);
@@ -492,8 +492,8 @@ function process_response(account_data){
     account_data["account"]["name"] = "Charles Drake";
     account_data["account"]["nickname"] = "Charles";
 
-
-
+    op=JSON.stringify(account_data,null,2);
+    document.getElementById("api_output").innerHTML=op;
 
     //pushing data here
  
@@ -520,13 +520,7 @@ function process_response(account_data){
 "bankingdetails": {
 "available_balance":parseInt(account_data["account"]["available_balance"]), //integer
 "balance":parseInt(account_data["account"]["balance"]), //integer
-"cash_balance":parseInt(account_data["account"]["cash_balance"]), //integer
-"cash_surrender_value":parseInt(account_data["account"]["cash_surrender_value"]), //integer
-"minimum_balance":null, //integer
-"original_balance":null, //integer
-"pay_out_amount":null, //integer
-"payoff_balance":null, //integer
-"total_account_value":null //integer
+"cash_balance":parseInt(account_data["account"]["cash_balance"])
 },
 "creditDetails": {
 "available_credit":parseInt(account_data["account"]["available_credit"]), //integer
