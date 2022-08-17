@@ -547,7 +547,60 @@ function process_response(account_data){
 console.log(push_Data);
     //pushing data here
 
-    window.adobeDataLayer.push(push_Data);
+    window.adobeDataLayer.push({
+"event":"mxIntegrationComplete",
+"person": {
+"name": {
+"fullName": `${account_data["account"]["name"]}`, //string
+}
+},
+"_spnam": {
+"mxProfile": {
+"accountdetails": {
+"account_number": parseInt(account_data["account"]["account_number"]), //long
+"created_at": `${account_data["account"]["created_at"]}`, //dateTime
+"imported_at": `${account_data["account"]["imported_at"]}`, //dateTime
+"institution_code": `${account_data["account"]["institution_code"]}`, //string
+"is_closed": `${account_data["account"]["is_closed"]}`, //boolean
+"is_hidden": `${account_data["account"]["is_hidden"]}`, //boolean
+"subtype": `${account_data["account"]["subtype"]}`, //string
+"type": `${account_data["account"]["type"]}`, //string
+"updated_at": `${account_data["account"]["updated_at"]}` //dataTime
+},
+"bankingdetails": {
+"available_balance":parseInt(account_data["account"]["available_balance"]), //integer
+"balance":parseInt(account_data["account"]["balance"]), //integer
+"cash_balance":parseInt(account_data["account"]["cash_balance"]), //integer
+"cash_surrender_value":parseInt(account_data["account"]["cash_surrender_value"]), //integer
+"minimum_balance":null, //integer
+"original_balance":null, //integer
+"pay_out_amount":null, //integer
+"payoff_balance":null, //integer
+"total_account_value":null //integer
+},
+"creditDetails": {
+"available_credit":parseInt(account_data["account"]["available_credit"]), //integer
+"credit_limit":parseInt(account_data["account"]["credit_limit" ])//integer
+},
+"integrationIds": {
+"guid": `${account_data["account"]["guid"]}`, //string
+"id": `${account_data["account"]["id"]}`, //string
+"member_guid": `${account_data["account"]["member_guid"]}`, //string
+"member_id": `${account_data["account"]["member_id"]}`, //string
+"user_guid": `${account_data["account"]["user_guid"]}`, //string
+"user_id": `${account_data["account"]["user_id"]}` //string
+},
+"loanDetails": {
+"day_payment_is_due":parseInt(account_data["account"]["day_payment_is_due"]), //integer
+"interest_rate":parseInt(account_data["account"]["interest_rate"]), //integer
+"last_payment":parseInt(account_data["account"]["last_payment"]), //integer
+"last_payment_at": `${account_data["account"]["last_payment_at"]}`, //dateTime
+"loan_amount":parseInt(account_data["account"]["loan_amount"]), //integer"minimum_payment":"minimum_payment", //integer
+"payment_due_at": `${account_data["account"]["payment_due_at"]}` //dateTime
+}
+}
+}
+});
 
 
 }
