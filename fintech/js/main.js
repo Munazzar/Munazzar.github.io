@@ -17,28 +17,7 @@ function sideBar(){
     console.log(document.cookie);
 
 
-if(window.XMLHttpRequest)
-				{
-					obj=new XMLHttpRequest();
-				}
-				else
-				{
-					obj=new ActiveXObject('Microsoft.XMLHTTP');
-				}
-				obj.open("GET","https://pea-green-mountain.000webhostapp.com/apicall.php",true);
-				obj.send();
-				obj.onreadystatechange=function()
-				{
-				if(obj.readyState==4 && obj.status==200)
-				{
-					value=obj.responseText;
-                    op=JSON.stringify(JSON.parse(value),null,2)
-                    // console.log(op);
-                    document.getElementById("api_output").innerHTML=op;
 
-
-                }
-                }
 
                 function banner(){
                     var banner = document.getElementById("banner");
