@@ -454,7 +454,7 @@ ul.wrapper-accordion li input[type=checkbox]:checked ~ p {
 }
 .container2{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding-right:400px ;
+    padding-right:200px ;
    
     width: 83%;
     display: flex;
