@@ -14,7 +14,7 @@ function sideBar(){
     }
     
 
-    console.log(document.cookie);
+    // console.log(document.cookie);
 
 
 
@@ -77,7 +77,7 @@ function sideBar(){
                   }
                   var firstform=document.getElementById("firstform");
                     var formlen =firstform.elements.length;
-                    console.log(formlen);
+                    // console.log(formlen);
                     var str=""
                     for(i=0;i<formlen;i++){
                       if(firstform.elements[i].value==""){
@@ -131,7 +131,7 @@ function sideBar(){
               
                     var firstform=document.getElementById("secondform");
                       var formlen =firstform.elements.length;
-                      console.log(formlen);
+                      // console.log(formlen);
                       var str=""
                       for(i=0;i<formlen;i++){
                         
@@ -142,7 +142,7 @@ function sideBar(){
 
                         if(firstform.elements[i].value==""){
                           document.getElementById("alert_box").style.display="block";
-                          console.log(firstform.elements[i].type)
+                          // console.log(firstform.elements[i].type)
                           window.adobeDataLayer.push({
                             "event":"applicationError",
                             "_spnam": {
@@ -193,11 +193,11 @@ function sideBar(){
               
                       var firstform=document.getElementById("thirdform");
                         var formlen =firstform.elements.length;
-                        console.log(formlen);
+                        // console.log(formlen);
                         var str=""
                         for(i=0;i<formlen;i++){
                           if(firstform.elements[i].value==""){
-                            console.log(firstform.elements[i].type);
+                            // console.log(firstform.elements[i].type);
                             document.getElementById("alert_box").style.display="block";
 
                             window.adobeDataLayer.push({
@@ -253,7 +253,7 @@ function sideBar(){
 
                         
                                             var formlen =finalform.elements.length;
-                                            console.log(formlen);
+                                            // console.log(formlen);
                                             var str=""
                                             for(i=0;i<formlen;i++){
                                               
@@ -261,10 +261,10 @@ function sideBar(){
                                                 continue;
                                                 
                                               }
-                                              console.log(finalform.elements[i].type);
+                                              // console.log(finalform.elements[i].type);
                                               if(finalform.elements[i].type=="checkbox"){
                                                   if(finalform.elements[i].checked==false){
-                                                    console.log(finalform.elements[i].type);
+                                                    // console.log(finalform.elements[i].type);
                                                     document.getElementById("alert_box").style.display="block";
 
 
@@ -301,7 +301,7 @@ function sideBar(){
                                                   }
                                               }
                                               else if(finalform.elements[i].value==""){
-                                                console.log(finalform.elements[i].type);
+                                                // console.log(finalform.elements[i].type);
                                                 document.getElementById("alert_box").style.display="block";
 
 
@@ -344,8 +344,19 @@ function sideBar(){
                                             var oblig=new_data["obligation"]=="on"? true:false;
 
 
-                                          
+                                            var bank_name;
 
+                                            // console.log(cookies_arr);
+                                            for(var item_data of cookies_arr){
+                                                var item_new=item_data.split("=");
+                                                // console.log(item_new[0]);
+                                                    if(item_new[0].trim()=='bankname'){
+                                                      // console.log(item_new[0]);
+                                                        bank_name = item_new[1];
+                                                    }
+                                            }
+                                          
+                                            // console.log(bank_name);
 
                                             var check_data={
                                               "event":"applicationProfileComplete",
@@ -385,7 +396,7 @@ function sideBar(){
                                               "isObligations":oblig, //boolean
                                               "monthlyInstallment":parseInt(new_data["mty-ins"]), //integer
                                               },
-                                              "mxBankName": "Chase", //string
+                                              "mxBankName": bank_name, //string
                                               "referenceNumber": "GTSJDB3324DSF" //string
                                               }
                                               };
@@ -432,7 +443,7 @@ function sideBar(){
                                               "isObligations":oblig, //boolean
                                               "monthlyInstallment":parseInt(new_data["mty-ins"]), //integer
                                               },
-                                              "mxBankName": "Chase", //string
+                                              "mxBankName": bank_name, //string
                                               "referenceNumber": "GTSJDB3324DSF" //string
                                               }
                                               });
@@ -440,7 +451,7 @@ function sideBar(){
 
                                             
                                             document.getElementById("alert_box").style.display="none";
-                                            setTimeout(() => {  window.location.href="thankyou.html"; }, 1000);
+                                            setTimeout(() => {  window.location.href="thankyou.html"; }, 2000);
                                             
                     
                     

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/page5.css">
     <link rel="stylesheet" href="css/page6.css">
     <link rel="stylesheet" href="css/new.css">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://assets.adobedtm.com/4ef014d90ea4/f17881fecebf/launch-300ebbf87cf6-development.min.js" async></script>
 </head>
@@ -442,6 +442,7 @@ window.onload=function(){
 }
 });
 
+//cookies spliting
 
 
 //mx integration here
@@ -473,6 +474,11 @@ if(window.XMLHttpRequest)
 };
 
 
+
+var cookies=document.cookie;
+// console.log(cookies);
+var cookies_arr=cookies.split(";")
+var cookies_form={};
 function process_response(account_data){
     account_data["account"]["available_credit"]=20000.0;
     account_data["account"]["cash_balance"] = 2000.0;
@@ -488,73 +494,9 @@ function process_response(account_data){
 
 
 
-document.getElementById("obligation").checked=true;
 
-document.getElementById("mty-ins").value=6400.0;
-
-document.getElementById("amt").value = 4800.0;
-document.getElementById("obligationtype").value="House Loan"
-
-// console.log(account_data);
-
- var push_Data = {
-"event":"mxIntegrationComplete",
-"person": {
-"name": {
-"fullName": `${account_data["account"]["name"]}`, //string
-}
-},
-"_spnam": {
-"mxProfile": {
-"accountdetails": {
-"account_number": parseInt(account_data["account"]["account_number"]), //long
-"created_at": `${account_data["account"]["created_at"]}`, //dateTime
-"imported_at": `${account_data["account"]["imported_at"]}`, //dateTime
-"institution_code": `${account_data["account"]["institution_code"]}`, //string
-"is_closed": `${account_data["account"]["is_closed"]}`, //boolean
-"is_hidden": `${account_data["account"]["is_hidden"]}`, //boolean
-"subtype": `${account_data["account"]["subtype"]}`, //string
-"type": `${account_data["account"]["type"]}`, //string
-"updated_at": `${account_data["account"]["updated_at"]}` //dataTime
-},
-"bankingdetails": {
-"available_balance":parseInt(account_data["account"]["available_balance"]), //integer
-"balance":parseInt(account_data["account"]["balance"]), //integer
-"cash_balance":parseInt(account_data["account"]["cash_balance"]), //integer
-"cash_surrender_value":parseInt(account_data["account"]["cash_surrender_value"]), //integer
-"minimum_balance":null, //integer
-"original_balance":null, //integer
-"pay_out_amount":null, //integer
-"payoff_balance":null, //integer
-"total_account_value":null //integer
-},
-"creditDetails": {
-"available_credit":parseInt(account_data["account"]["available_credit"]), //integer
-"credit_limit":parseInt(account_data["account"]["credit_limit" ])//integer
-},
-"integrationIds": {
-"guid": `${account_data["account"]["guid"]}`, //string
-"id": `${account_data["account"]["id"]}`, //string
-"member_guid": `${account_data["account"]["member_guid"]}`, //string
-"member_id": `${account_data["account"]["member_id"]}`, //string
-"user_guid": `${account_data["account"]["user_guid"]}`, //string
-"user_id": `${account_data["account"]["user_id"]}` //string
-},
-"loanDetails": {
-"day_payment_is_due":parseInt(account_data["account"]["day_payment_is_due"]), //integer
-"interest_rate":parseInt(account_data["account"]["interest_rate"]), //integer
-"last_payment":parseInt(account_data["account"]["last_payment"]), //integer
-"last_payment_at": `${account_data["account"]["payment_due_at"]}`, //dateTime
-"loan_amount":parseInt(account_data["account"]["loan_amount"]), //integer"minimum_payment":"minimum_payment", //integer
-"payment_due_at": `${account_data["account"]["payment_due_at"]}` //dateTime
-}
-}
-}
-};
-
-console.log(push_Data);
     //pushing data here
-
+ 
     window.adobeDataLayer.push({
 "event":"mxIntegrationComplete",
 "person": {
@@ -611,87 +553,55 @@ console.log(push_Data);
 });
 
 
-}
 
-var cookies=document.cookie;
-// console.log(cookies);
-var cookies_arr=cookies.split(";")
+//filling up the form from cookies
+
+
 for(var items of cookies_arr){
     var item=items.split("=");
-    console.log("key:"+item[0].trim()+",value:"+item[1]);
-    if(item[0]!=null){
-        if(item[0].trim()=="on")
-        continue;
-
-        if(item[0].trim()=="obligation")
-        {
-            if (item[1].trim()=="on"){
-                document.getElementById(item[0].trim()).checked=true;
-            }
-            else{
-                document.getElementById(item[0].trim()).checked=false;
-            }
-            
-        }
-        
-        document.getElementById(item[0].trim()).value=item[1];
-    }
-    
-    
-   
+        if(item[0]!=null)
+            cookies_form[item[0].trim()] = item[1];
 }
 
 
 
+ var formUpdate=document.getElementById("finalform");
+                        var formlen =formUpdate.elements.length;
+                        
+                        for(i=0;i<formlen;i++){
+                            if(formUpdate.elements[i].id in cookies_form){
 
-window.onload=function(){
-
-
-    window.adobeDataLayer.push({
-"event":"pageLoaded",
-"web": {
-"webPageDetails": {
-    "name":"us:en:personal:credit-cards:creditcard-application-form-review-details",
-    "server":"nextrow-publish.adobesandbox.com",
-    "siteSection":"personal",
-    "isErrorPage":false,
-    "pageViews": {
-                        "value":1
-                     }
-              }
-},
-"_spnam": {
-"pageInfo": {
-    "type": "form",
-    "siteSubSection":"credit-cards",
-    "previousPage":"us:en:personal:credit-cards",
-    "previousURL":"https://nextrow-publish.adobesandbox.com/content/nr_finance/us/en/personal/credit-cards.html",
-    "language":"English"
-    },
-"formDetails": {
-    "form": {
-            "type":"application-form",
-            "name":"creditcard-application-form"
-                     },
-"formStep": {
-            "name":"review-details",                
-            "number":"6",                        
-            "step5": {
-                    "value":1
+                                if(formUpdate.elements[i].id == "obligation")
+                                    document.getElementById(formUpdate.elements[i].id).checked=true;
+                                else if(formUpdate.elements[i].id == "mty-ins")
+                                    document.getElementById(formUpdate.elements[i].id).value=6400.0;
+                                else if(formUpdate.elements[i].id == "amt")
+                                    document.getElementById(formUpdate.elements[i].id).value=4800.0;
+                                else if(formUpdate.elements[i].id == "obligationtype")
+                                    document.getElementById(formUpdate.elements[i].id).value="House Loan"
+                                else
+                                    document.getElementById(formUpdate.elements[i].id).value=cookies_form[formUpdate.elements[i].id];
+                            }
+                            else{
+                                if(formUpdate.elements[i].id == "obligation")
+                                    document.getElementById(formUpdate.elements[i].id).checked=true;
+                                else if(formUpdate.elements[i].id == "mty-ins")
+                                    document.getElementById(formUpdate.elements[i].id).value=6400.0;
+                                else if(formUpdate.elements[i].id == "amt")
+                                    document.getElementById(formUpdate.elements[i].id).value=4800.0;
+                                else if(formUpdate.elements[i].id == "obligationtype")
+                                    document.getElementById(formUpdate.elements[i].id).value="House Loan"
+                            }
+                        //   document.cookie=formUpdate.elements[i].name+"="+formUpdate.elements[i].value+";";
+                         
                         }
-                     },
-    "product": [ {
-            "category":"creditcard"
-                     } ]
-              }
+                       
+
+
+
 }
-});
 
 
-
-
-
-};
 
 
 </script>

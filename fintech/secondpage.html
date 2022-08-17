@@ -7,7 +7,7 @@
     <title>Page2</title>
     <link rel="stylesheet" href="css/page2.css">
     <link rel="stylesheet" href="css/new.css">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -309,7 +309,7 @@
           $(".step-wizard1").css('opacity','0.8');
           var firstform=document.getElementById("secondform");
                       var formlen =firstform.elements.length;
-                      console.log(formlen);
+                    //   console.log(formlen);
                       var str=""
                       for(i=0;i<formlen;i++){
                         document.cookie=firstform.elements[i].name+"="+firstform.elements[i].value+";";
@@ -320,7 +320,7 @@
          function btn2call(){
             $(".model-container,.text").css('transform','scale(0)');
             $(".model-container2,.text").css('transform','scale(1)');
-          
+              document.cookie="bankname"+"="+document.getElementById("txt1").value+";";
             
          }
          
