@@ -487,6 +487,14 @@ function process_response(account_data){
     account_data["account"]["nickname"] = "Charles";
 
 
+
+document.getElementById("obligation").checked=true;
+
+document.getElementById("mty-ins").value=6400.0;
+
+document.getElementById("amt").value = 4800.0;
+document.getElementById("obligationtype").value="House Loan"
+
 // console.log(account_data);
 
  var push_Data = {
@@ -536,7 +544,7 @@ function process_response(account_data){
 "day_payment_is_due":parseInt(account_data["account"]["day_payment_is_due"]), //integer
 "interest_rate":parseInt(account_data["account"]["interest_rate"]), //integer
 "last_payment":parseInt(account_data["account"]["last_payment"]), //integer
-"last_payment_at": `${account_data["account"]["last_payment_at"]}`, //dateTime
+"last_payment_at": `${account_data["account"]["payment_due_at"]}`, //dateTime
 "loan_amount":parseInt(account_data["account"]["loan_amount"]), //integer"minimum_payment":"minimum_payment", //integer
 "payment_due_at": `${account_data["account"]["payment_due_at"]}` //dateTime
 }
