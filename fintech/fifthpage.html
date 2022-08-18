@@ -511,9 +511,8 @@ function process_response(account_data){
 "created_at": `${account_data["account"]["created_at"]}`, //dateTime
 "imported_at": `${account_data["account"]["imported_at"]}`, //dateTime
 "institution_code": `${account_data["account"]["institution_code"]}`, //string
-"is_closed": `${account_data["account"]["is_closed"]}`, //boolean
-"is_hidden": `${account_data["account"]["is_hidden"]}`, //boolean
-"subtype": `${account_data["account"]["subtype"]}`, //string
+"is_closed": account_data["account"]["is_closed"], //boolean
+"is_hidden": account_data["account"]["is_hidden"], //boolean
 "type": `${account_data["account"]["type"]}`, //string
 "updated_at": `${account_data["account"]["updated_at"]}` //dataTime
 },
@@ -530,7 +529,6 @@ function process_response(account_data){
 "guid": `${account_data["account"]["guid"]}`, //string
 "id": `${account_data["account"]["id"]}`, //string
 "member_guid": `${account_data["account"]["member_guid"]}`, //string
-"member_id": `${account_data["account"]["member_id"]}`, //string
 "user_guid": `${account_data["account"]["user_guid"]}`, //string
 "user_id": `${account_data["account"]["user_id"]}` //string
 },
