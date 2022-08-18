@@ -400,7 +400,15 @@
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" >
 
-
+var cookies=document.cookie;
+// console.log(cookies);
+var cookies_arr=cookies.split(";")
+var cookies_form={};
+for(var items of cookies_arr){
+    var item=items.split("=");
+        if(item[0]!=null)
+            cookies_form[item[0].trim()] = item[1];
+}
 window.onload=function(){
     window.adobeDataLayer.push({
 "event":"pageLoaded",
@@ -475,10 +483,10 @@ if(window.XMLHttpRequest)
 
 
 
-var cookies=document.cookie;
-// console.log(cookies);
-var cookies_arr=cookies.split(";")
-var cookies_form={};
+
+var nickname=cookies_form["first_name"];
+var fullname=cookies_form["first_name"]+" "+cookies_form["last_name"];
+var email=cookies_form["email_id"];
 function process_response(account_data){
     account_data["account"]["available_credit"]=20000.0;
     account_data["account"]["cash_balance"] = 2000.0;
@@ -489,12 +497,14 @@ function process_response(account_data){
     account_data["account"]["interest_rate"] = 11.4;
     account_data["account"]["last_payment"] = 4800.0;
     account_data["account"]["loan_amount"] = 6400.0;
-    account_data["account"]["name"] = "Charles Drake";
-    account_data["account"]["nickname"] = "Charles";
+    account_data["account"]["name"] = fullname;
+    account_data["account"]["nickname"] =nickname;
 
     op=JSON.stringify(account_data,null,2);
     document.getElementById("api_output").innerHTML=op;
 
+
+    // console.log(email);
     //pushing data here
  
     window.adobeDataLayer.push({
@@ -541,6 +551,13 @@ function process_response(account_data){
 "payment_due_at": `${account_data["account"]["payment_due_at"]}` //dateTime
 }
 }
+},
+"identityMap": {
+"email": [ {
+"id": `${email}`, //Dynamic mail ID from the Application
+"authenticatedState": "ambiguous",
+"primary": true
+} ]
 }
 });
 
@@ -549,11 +566,7 @@ function process_response(account_data){
 //filling up the form from cookies
 
 
-for(var items of cookies_arr){
-    var item=items.split("=");
-        if(item[0]!=null)
-            cookies_form[item[0].trim()] = item[1];
-}
+
 
 
 
