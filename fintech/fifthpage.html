@@ -553,11 +553,16 @@ function process_response(account_data){
 }
 },
 "identityMap": {
-"email": [ {
-"id": `${email}`, //Dynamic mail ID from the Application
-"authenticatedState": "ambiguous",
-"primary": true
-} ]
+    "email": [ {
+        "id": `${email}`,                //Dynamic mail ID from the Application
+        "authenticatedState": "ambiguous",
+        "primary": true
+            } ],
+    "mxguid": [ {
+        "id": "guid",                //Dynamic guid from the MX Response
+        "authenticatedState": "ambiguous",
+        "primary": true
+            } ]     
 }
 });
 
