@@ -559,7 +559,7 @@ function process_response(account_data){
         "primary": true
             } ],
     "mxguid": [ {
-        "id": "guid",                //Dynamic guid from the MX Response
+        "id": `${account_data["account"]["guid"]}`,                //Dynamic guid from the MX Response
         "authenticatedState": "ambiguous",
         "primary": true
             } ]     
