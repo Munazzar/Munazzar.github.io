@@ -28,7 +28,7 @@ function sideBar(){
                       document.getElementById('apply-now').style.display="none";
                       document.getElementById('banner-txt').style.display="none";
                       document.getElementById('banner-hdr').style.display="none";
-                      document.getElementById('nav-bar').style.display="none"
+                      // document.getElementById('nav-bar').style.display="none"
                       document.getElementById('banner-sh').style.transform="rotate(180deg)";
                     }
                     else{
@@ -37,7 +37,7 @@ function sideBar(){
                       document.getElementById('apply-now').style.display="block";
                       document.getElementById('banner-txt').style.display="block";
                       document.getElementById('banner-hdr').style.display="block";
-                      document.getElementById('nav-bar').style.display="block";
+                      // document.getElementById('nav-bar').style.display="block";
                       document.getElementById('banner-sh').style.transform="rotate(360deg)";
                     }
                     }
