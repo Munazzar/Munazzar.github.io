@@ -1,14 +1,17 @@
+
+
 .nav-bar{
 
    
     padding:5px;
-    margin: 0px 25px;
+   
     background-color: black;
+ 
   }
   
   .banner {
     position: relative;
-    margin: 25px;
+    
    
    
     
@@ -16,14 +19,14 @@
   }
   #banner{
     position: relative;
-    height:400px;
+    height:450px;
     
    
     
    
   }
   .banner-show{
-    max-height: 400px;
+    max-height:450px;
     transition: all 1s linear;
   }
 
@@ -41,54 +44,106 @@
   .banner div img{
     width: 100%;
     max-height:100%;
-    border-radius: 5px;
+   
     box-shadow: inset 15px 0px 15px black;
     
+  }
+  .img_nav{
+    height:50px;
+    width:100%;
+
+  }
+  .nav_left_div{
+
+    display:inline-flex;
+  }
+.nav_left_logo{
+  color:white;
+  margin-left:10px;
+
+
+}
+a .nav_left_logo{
+  color:white;
+ 
+
+
+}
+a, a:link{
+  text-decoration: none!important;
+  
+}
+
+.red-text{
+  color:red;
+}
+.nav_search_div{
+  position:absolute;
+  right:0;
+  background-color: red;
+  padding:15px;
+  margin:0px 16px;
+}
+.nav_right_div{
+  margin-left:100px;
+  color:white;
+  display:inline-flex;
+}
+.nav_right_div p{
+  margin:16px 45px;
+}
+  .img2{
+    position:absolute;
+    top:0;
+    left:0;
+opacity:0.45;
+
+
   }
   .banner-txt{
 
     position: absolute;
     max-width: 40%;
-    top: 20%;
+    top: 25%;
     left: 0%;
     padding:5px;
     text-align: justify;
     color:white;
-    font-weight: 400;
+    font-weight: 100;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 20px;
-    margin:5px;
+    font-size: 25px;
+    margin:25px;
   }
   .banner-hdr{
     position: absolute;
     max-width: 40%;
-    top: 1%;
+    top: 5%;
     left: 0%;
     padding:5px;
     text-align: justify;
     color:white;
- 
+    font-size:55px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  
-    margin:5px;
+   
+    margin:25px;
   }
 
   .banner-sh{
-    position: absolute;
-    bottom: 1%;
-    left: 0%;
+    position: relative;
+ 
     max-width: 25px;
     max-height: 25px;
-    margin:5px;
+    margin:10px 30px 0px 30px;
+    
     transition: all 1s linear;
   }
   
   .banner-btn{
     position: absolute;
-    bottom: 10%;
+    bottom: 20%;
     left: 0%;
     
-    margin:10px;
+    margin:30px;
 
     color:white;
     border-color: #6c757d;
@@ -132,7 +187,7 @@
   
   .second{
     flex:5;
-    padding:20px;
+    
     transition: all 0.5s linear;
   }
   .second2{
