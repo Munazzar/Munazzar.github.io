@@ -20,8 +20,8 @@ function nextSequence(){
 
 
 $("body").on("click keypress",function(event){
-    if (event.target.id != "tool-tip") {
-        if(level==0)
+    if (!["tool-tip","red", "blue", "green", "yellow"].includes(event.target.id) ) {
+    if(level==0)
     {
         nextSequence();
     }
@@ -40,6 +40,7 @@ $(".btn").on("click",function(){
  
     var userChosenColour = this.id;
     userClickedPattern.push(userChosenColour);
+    if(gamePattern.length==0)return;
     if(gamePattern[indexCheck] == userChosenColour ){
         indexCheck+=1;
         if(indexCheck == gamePattern.length){
@@ -54,8 +55,9 @@ $(".btn").on("click",function(){
         indexCheck = 0;
         gamePattern = [];
         level = 0;
-        $("h1").text("Game Over, Press Any Key to Restart");
+        $("h1").text("Game Over, Click Me to Restart");
         userChosenColour = "wrong";
+        
     }
     playSound(userChosenColour);
     animatePress(userChosenColour);
