@@ -24,6 +24,7 @@ $("body").on("click keypress",function(event){
     if(level==0)
     {
         nextSequence();
+        $("body").css("background-color","#011F3F").delay(100);
     }
     
     }
@@ -57,6 +58,8 @@ $(".btn").on("click",function(){
         level = 0;
         $("h1").text("Game Over, Click Me to Restart");
         userChosenColour = "wrong";
+        $("body").css("background-color","red").delay(100);
+        // $("body").css("background-color","#011F3F").delay(100);
         
     }
     playSound(userChosenColour);
