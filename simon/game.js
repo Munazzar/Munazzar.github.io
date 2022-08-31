@@ -19,17 +19,22 @@ function nextSequence(){
 
 
 
-$("body").on("click keypress",function(){
-   
-    if(level==0)
+$("body").on("click keypress",function(event){
+    if (event.target.id != "tool-tip") {
+        if(level==0)
     {
         nextSequence();
     }
     
+    }
+   
+   
 
 });
 
-
+$("#tool-tip").click(function(){
+    $("#tooltip").slideToggle(1000);
+})
 
 $(".btn").on("click",function(){
  
