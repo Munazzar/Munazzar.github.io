@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<head>
+    <!-- CSS only -->
+
+
+</head>
+<body>
+    <div class="container">
+       <h1>Dictionary</h1>
+       <p class="alert">Please enter a word</p>
+       <p class="fail">Please enter a valid word</p>
+       <input type="text" id="word">
+       
+       <button class="btn" id="search">search</button>
+       <div class="sub-container">
+        <div class="first">
+            <p><b>Meaning of the word:</b></p>
+            <p id="meaning"></p>
+            <p><b>pronunciation of the word:</b></p>
+            <p id="pronunciation"></p>
+            <p><b>Example word usage:</b></p>
+            <p id="example"></p>
+        </div>
+        <div class="second"><audio src=""></audio><button id="play">play</button> </div>
+       </div>
+    </div>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    var aud;
+    var meaning="";
+    var example="";
+$("#search").click(function(){
+    aud;
+     meaning="";
+     example="";
+     word = $("#word").val();
+    if(word==""){
+        $(".alert").css("display","block");
+        $("#word").focus();
+    }
+    else{
+        $(".alert").css("display","none");
+        $.ajax({
+            url: "https://api.dictionaryapi.dev/api/v2/entries/en/"+word,
+ 
+        })
+        .done(function( data ) {
+            $(".fail").css("display","none");
+            console.log(data);
+            console.log( "Sample of data:", data[0]["meanings"][0]["definitions"][0]["definition"]);
+
+
+            data[0]["meanings"].forEach(function(item){
+                   item["definitions"].forEach(function(item2){
+                    if(typeof item2["definition"]!="undefined")
+                        meaning+=item2["definition"]+"<br><br>";
+                   })
+            });
+
+            $("#meaning").html(meaning);
+
+            data[0]["meanings"].forEach(function(item){
+                   item["definitions"].forEach(function(item2){
+                    if(typeof item2["example"]!="undefined")
+                        example+=item2["example"]+"<br><br>";
+                   })
+            });
+            console.log(data[0]["phonetic"]);
+            $("#pronunciation").text(data[0]["phonetic"]);
+            $("#example").html(example);
+
+            // for(i in data[0]["phonetics"]){
+            //     if(i["audio"]!=""){
+            //         console.log(i["audio"]);
+            //     }
+            // }
+            data[0]["phonetics"].forEach(function(item){
+                if(typeof item["audio"]!="undefined"){
+                    // console.log(item["audio"]);
+                    aud=item["audio"];
+                }
+            })
+          console.log(aud);
+            if(aud=="")
+            {
+                $("#play").css("display","none");
+            }
+            else{
+                $("#play").css("display","block");
+            }
+           
+        })
+        .fail(function(){
+                console.log("error getting the data");
+                $(".fail").css("display","block");
+                $("#word").focus();
+        });
+
+    }
+    
+})
+$("#play").click(function(){
+    const audioElement = new Audio(`${aud}`);
+    audioElement.play();
+})
+</script>
+</body>
+<style>
+    .container{
+max-width:500px;
+text-align:center;
+padding:45px;
+margin:auto;
+ 
+  width: 600px;
+ transition: all 0.5s linear;
+ font-weight:500;
+}
+.container:hover{
+  background: #f2f2f2;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 20px 8px #d0d0d0;
+   transition: all 0.5s linear;
+}
+.container input{
+margin-top:5px;
+margin-bottom:5px;
+
+
+  border-radius: 4px;
+    box-sizing: border-box;
+}
+.sub-container{
+    display: flex;
+}
+.first{
+    flex:1;
+    text-align: left;
+}
+.second{
+    padding:25px;
+    flex:1;
+}
+.alert{
+    display:none;
+  padding: 10px 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 2px solid rgb(0,0,0,0.2);
+}
+.fail{
+display: none;
+padding: 10px 20px;
+  background-color: orange; /* Red */
+  color: white;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 2px solid rgb(0,0,0,0.2);
+}
+button{
+
+    margin-bottom:15px;
+    padding:10px;
+    background-color: white;
+      color: black;
+      border: 2px solid #e7e7e7;
+      border-radius:5px;
+}
+</style>
+</html>
