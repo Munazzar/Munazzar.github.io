@@ -10,14 +10,9 @@
             margin: 0;
             padding: 0;
         }
-        .imgbox {
-            display: grid;
-            height: 100%;
-        }
         .center-fit {
             max-width: 100%;
-            max-height: 100vh;
-            margin: auto;
+      
         }
 </style>
 <!-- Responsive -->
@@ -45,12 +40,27 @@
 </head>
 
 <body>
-    <div class="imgbox">
-<a href="signin.html"><img class="center-fit" src="images/login.jpg"></a>
-</div>
+
+<img class="center-fit" src="images/login.jpg" onclick="change(this.id)" id="1" style="display:block;">
+<img class="center-fit" src="images/signin.jpg" onclick="change(this.id)" id="11" style="display:none;">
+<img class="center-fit" src="images/signin2.png" onclick="change(this.id)" id="111" style="display:none;">
+<img class="center-fit" src="images/HomeScreen.jpg" onclick="change(this.id)" id="1111" style="display:none;">
+<img class="center-fit" src="images/AccountScreen.jpg" onclick="change(this.id)" id="11111" style="display:none;">
+<img class="center-fit" src="images/Connect a device.jpg" onclick="change(this.id)" id="111111" style="display:none;">
+<img class="center-fit" src="images/Connect a device2.jpg" onclick="change(this.id)" id="1111111" style="display:none;">
+<img class="center-fit" src="images/Data.jpg" onclick="change(this.id)" id="11111111" style="display:none;">
+<img class="center-fit" src="images/BP Readings.jpg" onclick="change(this.id)" id="111111111" style="display:none;">
+<img class="center-fit" src="images/Notification Screen.jpg" onclick="change(this.id)" id="1111111111" style="display:none;">
+<img class="center-fit" src="images/Notification Screen1.jpg" onclick="change(this.id)" id="11111111111" style="display:none;">
+<img class="center-fit" src="images/Drug Injection Process Flow1.jpg" onclick="change(this.id)" id="111111111111" style="display:none;">
+<img class="center-fit" src="images/Drug Injection Process Flow1a.jpg" onclick="change(this.id)" id="1111111111111" style="display:none;">
+<img class="center-fit" src="images/Drug Injection Process Flow1b.jpg" onclick="change(this.id)" id="11111111111111" style="display:none;">
+<img class="center-fit" src="images/Drug Injection Process Flow1c.jpg" onclick="change(this.id)" id="111111111111111" style="display:none;">
+<a href="index.html"><img class="center-fit" src="images/Notification Screen-1.jpg" onclick="change(this.id)" id="1111111111111111" style="display:none;"></a>
 
 
-    
+
+
 <script>
     window.addEventListener('load', () => {
       registerSW();
@@ -69,6 +79,11 @@
         }
       }
     }
+function change(id){
+    document.getElementById(id).style.display="none";
+    document.getElementById(id+"1").style.display="block";
+}
+
  </script>
 	
 
