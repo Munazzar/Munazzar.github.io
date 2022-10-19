@@ -9,14 +9,14 @@
 	"description":"This is a PWA tutorial.",
 	"icons":[
 	{
-	"src":"images/icon-150x150.png",					
+	"src":"images/icon-150x150.jpg",					
 	"sizes":"150x150",
-	"type":"image/png"
+	"type":"image/jpg"
 	},
 	{
-	"src":"images/icon-300x300.png",
+	"src":"images/icon-300x300.jpg",
 	"sizes":"300x300",
-	"type":"image/png"
+	"type":"image/jpg"
 	}
 ]
 }
