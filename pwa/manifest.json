@@ -1,21 +1,21 @@
 {
-	"name":"PWA Tutorial",
-	"short_name":"PWA",
+	"name":"We Pharma Assist",
+	"short_name":"Assist",
 	"start_url":"index.html",
 	"display":"standalone",
 	"background_color":"white",
 	"theme_color":"black",
 	"scope": ".",
-	"description":"This is a PWA tutorial.",
+	"description":"We.Pharma demo app by NextRow",
 	"icons":[
 	{
-	"src":"images/icon-150x150.jpg",					
-	"sizes":"150x150",
+	"src":"images/icon-300x300.jpg",					
+	"sizes":"300x300",
 	"type":"image/jpg"
 	},
 	{
-	"src":"images/icon-300x300.jpg",
-	"sizes":"300x300",
+	"src":"images/icon-600x600.jpg",
+	"sizes":"600x600",
 	"type":"image/jpg"
 	}
 ]
