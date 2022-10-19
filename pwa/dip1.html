@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body{
+        margin:0px;
+        padding:0px;
+    }
+    img{
+        width: 100%;
+    }
+</style>
+
+</head>
+
+<body>
+    <img src="images/Drug Injection Process Flow1.jpg" onclick="change(this.id)" id="1" style="display:block;">
+    <img src="images/Drug Injection Process Flow1a.jpg" onclick="change(this.id)" id="11" style="display:none;">
+    <img src="images/Drug Injection Process Flow1b.jpg" onclick="change(this.id)" id="111" style="display:none;">
+    <a href="notify3.html"><img src="images/Drug Injection Process Flow1c.jpg" id="1111" style="display:none;"></a>
+</body>
+<script>
+function change(id){
+    document.getElementById(id).style.display="none";
+    document.getElementById(id+"1").style.display="block";
+}
+</script>
+
+</html>
