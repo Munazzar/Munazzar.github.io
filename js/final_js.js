@@ -6,7 +6,7 @@ function refreshFrame() {
    a.previewFile({
       content: {
          location: {
-            url: "test23.pdf"
+            url: "https://munazzar.github.io/PDA_Brochure_Demo.pdf"
          }
       },
       metaData: {

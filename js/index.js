@@ -11,7 +11,7 @@ function refreshFrame() {
    adobeDCView.previewFile({
       content: {
          location: {
-            url: "test23.pdf"
+            url: "https://munazzar.github.io/PDA_Brochure_Demo.pdf"
          }
       },
       metaData: {
@@ -483,7 +483,7 @@ var viewerConfig = {
           adobeDCView.previewFile({
               content: {
                   location: {
-                      url: "PDA_Brochure_Demo.pdf",
+                      url: "https://munazzar.github.io/PDA_Brochure_Demo.pdf",
                   },
               },
               metaData: {
