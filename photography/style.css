@@ -85,7 +85,7 @@ color:white;
 /* Masonry Grid */
 /* Masonry Grid */
 .masonry-grid {
-    column-count: 3;
+    column-count: 4;
     column-gap: 0.5rem;
     row-gap: 0.5rem;
     padding: 1rem;
@@ -96,21 +96,18 @@ color:white;
     width: 100%;
     display: block;
     border-radius: 2px;
-    transition: background-size 0.4s ease, box-shadow 0.4s ease; /* Smooth transition for zoom */
+    transition: transform 0.7s ease, box-shadow 0.7s ease; /* Smooth transition for zoom */
     opacity: 1;
     object-fit: cover;
-    background-size: cover;
-    background-position: center;
-    margin-bottom: 1rem;
+    margin-bottom:1rem;
     cursor: pointer; /* Change cursor to pointer */
 }
 
 .masonry-grid img:hover {
-    background-size: 120%; /* Slight zoom effect in place */
     z-index: 1;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow for effect */
+    transform: scale(1.1); /* Zoom in on hover */
+    box-shadow: 0 15px 26px rgba(0, 0, 0, 0.5); /* Add shadow for effect */
 }
-
 
 
 
@@ -210,7 +207,9 @@ color:white;
 @media (max-width: 768px) {
     .masonry-grid {
         column-count: 2;
-        row-gap: 0.5rem; /* Smaller row gap for mobile screens */
+        column-gap:0.2rem;
+        row-gap: 0.2rem; /* Smaller row gap for mobile screens */
+        padding:0.2rem;
     }
 
     .nav-button {
@@ -224,7 +223,9 @@ color:white;
         max-height: 75%;
     }
     .masonry-grid img{
-        margin-bottom:0.5rem;
+        margin-bottom:0.2rem;
+        border-radius:0px;
+
     }
 }
 
