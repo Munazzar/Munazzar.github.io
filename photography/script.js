@@ -66,9 +66,11 @@ async function renderPhotos() {
                 index,
             });
 
-            // Set attributes for animations
-            imgElement.setAttribute('data-aos', 'fade-up');
-            imgElement.setAttribute('data-aos-anchor-placement', 'top-center');
+            // Check if the image is in the viewport
+            if (!isInViewport(imgElement)) {
+                imgElement.setAttribute('data-aos', 'fade-up');
+                imgElement.setAttribute('data-aos-anchor-placement', 'top-center');
+            }
 
             imgElement.alt = 'Image';
             imgElement.classList.add('masonry-item'); // Class for styling
@@ -81,6 +83,17 @@ async function renderPhotos() {
     } while (nextPageToken);
 
     loadingText.style.display = 'none'; // Hide loading text
+}
+
+// Helper function to check if an element is in the viewport
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
 }
 
 // Intersection Observer for fade-in effect
