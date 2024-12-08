@@ -9,6 +9,8 @@ let isZoomed = false; // Track zoom state
 let isDragging = false; // Track dragging state
 let startX = 0, startY = 0; // Start positions for dragging
 let offsetX = 0, offsetY = 0; // Track drag offsets
+let currentSortOption = 'name-asc'; // Default sort option
+let currentLayoutOption = 'grid'; // Default layout option
 
 // Fetch photos from Google Drive
 async function fetchPhotosFromDrive(nextPageToken = null) {
@@ -16,7 +18,7 @@ async function fetchPhotosFromDrive(nextPageToken = null) {
         const queryParams = new URLSearchParams({
             key: API_KEY,
             q: `'${FOLDER_ID}' in parents and mimeType contains 'image/' and trashed=false`,
-            fields: 'nextPageToken, files(id, name, webContentLink, thumbnailLink)',
+            fields: 'nextPageToken, files(id, name, webContentLink, thumbnailLink, createdTime)',
             pageSize: 100,
         });
 
@@ -36,7 +38,7 @@ async function fetchPhotosFromDrive(nextPageToken = null) {
     }
 }
 
-// Render photos in a Masonry Grid
+// Render photos in the selected layout
 async function renderPhotos() {
     const galleryContainer = document.getElementById('gallery');
     const loadingText = document.getElementById('loading');
@@ -47,71 +49,76 @@ async function renderPhotos() {
         const data = await fetchPhotosFromDrive(nextPageToken);
         nextPageToken = data.nextPageToken;
 
-        // Render each photo as it's loaded
-        data.files.forEach((photo, index) => {
-            const imgElement = document.createElement('img');
-
-            // Use high-resolution image if available
-            if (photo.thumbnailLink) {
-                imgElement.src = photo.thumbnailLink.replace('=s220', '=s1024'); // Better resolution
-            } else if (photo.webContentLink) {
-                imgElement.src = photo.webContentLink;
-            } else {
-                return; // Skip if no valid image link
-            }
-
-            // Add image to the list
+        data.files.forEach((photo) => {
             imageList.push({
-                src: imgElement.src,
-                index,
+                id: photo.id,
+                name: photo.name,
+                src: photo.thumbnailLink ? photo.thumbnailLink.replace('=s220', '=s1024') : photo.webContentLink,
+                createdTime: photo.createdTime
             });
-
-            // Check if the image is in the viewport
-            if (!isInViewport(imgElement)) {
-                imgElement.setAttribute('data-aos', 'fade-up');
-                imgElement.setAttribute('data-aos-anchor-placement', 'top-center');
-            }
-
-            imgElement.alt = 'Image';
-            imgElement.classList.add('masonry-item'); // Class for styling
-            imgElement.addEventListener('click', () => openModal(index)); // Open modal on click
-            galleryContainer.appendChild(imgElement);
-
-            // Trigger fade-in for new images
-            observer.observe(imgElement);
         });
     } while (nextPageToken);
 
+    sortAndRenderImages('name-asc'); // Default sorting by name (numerically)
     loadingText.style.display = 'none'; // Hide loading text
 }
 
-// Helper function to check if an element is in the viewport
-function isInViewport(element) {
-    const rect = element.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
+// Sort and render images
+function sortAndRenderImages(sortOption) {
+    const galleryContainer = document.getElementById('gallery');
+    galleryContainer.innerHTML = ''; // Clear the container
+    sortImages(sortOption); // Sort images based on the selected option
+
+    imageList.forEach((photo, index) => {
+        const imgElement = document.createElement('img');
+        imgElement.src = photo.src;
+        imgElement.alt = `Image ${index + 1}`;
+        imgElement.classList.add('gallery-item');
+        detectImageOrientation(photo.src, imgElement);
+        if (currentLayoutOption === 'grid') {
+            imgElement.setAttribute('data-aos', 'fade-up');
+        } else {
+            imgElement.removeAttribute('data-aos'); // Remove AOS attributes if not in grid mode
+        }
+        imgElement.addEventListener('click', () => openModal(index)); 
+        galleryContainer.appendChild(imgElement);
+    });
+
+    updateLayout(); // Apply the current layout style (grid or masonry)
 }
 
-// Intersection Observer for fade-in effect
-const observer = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                observer.unobserve(entry.target); // Stop observing after fading in
-            }
-        });
-    },
-    { threshold: 0.2 } // Trigger when 20% of the image is visible
-);
+// **Detect if image is vertical**
+function detectImageOrientation(imageUrl, imgElement) {
+    const tempImg = new Image();
+    tempImg.src = imageUrl;
+    tempImg.onload = function () {
+        if (tempImg.height > tempImg.width) {
+            imgElement.classList.add('vertical'); // Add "vertical" class to vertically dominant images
+        }
+    };
+}
+// Sort images based on the user's selected option
+function sortImages(option) {
+    switch (option) {
+        case 'name-asc':
+            imageList.sort((a, b) => extractNumber(a.name) - extractNumber(b.name));
+            break;
+        case 'name-desc':
+            imageList.sort((a, b) => extractNumber(b.name) - extractNumber(a.name));
+            break;
+    }
+}
+
+// Extract the numeric part from the image name (e.g., "1.jpg" => 1, "10.jpg" => 10)
+function extractNumber(name) {
+    const match = name.match(/\d+/);
+    return match ? parseInt(match[0]) : 0;
+}
 
 // Open Modal
 function openModal(index) {
     currentIndex = index;
-
+    document.body.style.overflow = 'hidden';
     const modal = document.getElementById('image-modal');
     const modalImg = document.getElementById('modal-image');
 
@@ -132,6 +139,9 @@ function openModal(index) {
 function closeModal() {
     const modal = document.getElementById('image-modal');
     modal.style.display = 'none';
+
+    document.body.style.overflow = 'auto';
+
 }
 
 // Navigate to the Next Image
@@ -146,75 +156,119 @@ function prevImage() {
     openModal(currentIndex);
 }
 
+// Toggle Dark Mode
+function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+    const headers = document.getElementsByClassName('portfolio-header');
+    const themeToggle = document.getElementById('theme-toggle');
+
+    for (let i = 0; i < headers.length; i++) {
+        headers[i].classList.toggle('dark');
+    }
+
+    // **Check if dark mode is active and update the icon**
+    if (document.body.classList.contains('dark')) {
+        themeToggle.textContent = '🌙'; // Moon icon for dark mode
+    } else {
+        themeToggle.textContent = '🌞'; // Sun icon for light mode
+    }
+}
+
+
+// Event Listeners
+document.getElementById('theme-toggle').addEventListener('click', toggleDarkMode);
+document.getElementById('sort-toggle').addEventListener('click', toggleSortOption);
+document.getElementById('layout-toggle').addEventListener('click', toggleLayoutOption);
+
+document.getElementById('modal-image').addEventListener('click', enableZoom); // Zoom toggle
+
+// Enable toggle functionality for sorting
+function toggleSortOption() {
+    currentSortOption = currentSortOption === 'name-asc' ? 'name-desc' : 'name-asc';
+    document.getElementById('sort-toggle').textContent = currentSortOption === 'name-asc' ? 'UP-DOWN' : 'DOWN-UP';
+    sortAndRenderImages(currentSortOption);
+}
+
+// Enable toggle functionality for layout
+function toggleLayoutOption() {
+    currentLayoutOption = currentLayoutOption === 'grid' ? 'masonry' : 'grid';
+    document.getElementById('layout-toggle').textContent = currentLayoutOption === 'grid' ? 'GRID' : 'MASONRY';
+
+    const galleryContainer = document.getElementById('gallery');
+    const images = galleryContainer.querySelectorAll('img');
+
+    images.forEach((imgElement) => {
+        if (currentLayoutOption === 'grid') {
+            imgElement.setAttribute('data-aos', 'fade-up'); // Optional: Custom delay
+        } else {
+            imgElement.removeAttribute('data-aos'); 
+        }
+    });
+
+    updateLayout(); // Apply the new layout style (grid or masonry)
+    if (currentLayoutOption === 'grid') {
+        setTimeout(() => {
+            AOS.init();
+            AOS.refresh();
+        }, 100); // Small delay to ensure all elements are in the DOM
+    }
+}
+
+
+// Update layout (grid or masonry)
+function updateLayout() {
+    const galleryContainer = document.getElementById('gallery');
+    if (currentLayoutOption === 'grid') {
+        galleryContainer.classList.add('grid-layout');
+        galleryContainer.classList.remove('masonry-grid');
+    } else {
+        galleryContainer.classList.add('masonry-grid');
+        galleryContainer.classList.remove('grid-layout');
+    }
+}
+
 // Enable Zoom and Dragging
 function enableZoom(event) {
     const modalImg = event.target;
     isZoomed = !isZoomed;
 
-    if (isZoomed) {
-        modalImg.style.transform = 'scale(2)'; // Zoom in
-        modalImg.style.cursor = 'grab'; // Hand cursor for drag
-    } else {
-        modalImg.style.transform = 'scale(1)'; // Zoom out
-        modalImg.style.cursor = 'zoom-in';
-        offsetX = 0;
-        offsetY = 0; // Reset position
-    }
+    // Attach this to the event listener for zoom functionality
+if (isZoomed) {
+    modalImg.style.transform = 'scale(2)'; // Zoom in
+    modalImg.style.cursor = 'zoom-out'; 
+    // Attach mousemove event
+    modalImg.addEventListener('mousemove', moveImageOpposite);
+} else {
+    // Remove mousemove event when zoom is disabled
+    modalImg.style.cursor = 'zoom-in'; 
+    modalImg.style.transform = 'scale(1)'; // Zoom out
+    modalImg.removeEventListener('mousemove', moveImageOpposite);
+    offsetX = 0;
+    offsetY = 0; 
 }
 
-// Start Dragging
-function startDragging(event) {
-    if (!isZoomed) return;
-
-    isDragging = true;
-    startX = event.clientX;
-    startY = event.clientY;
-
-    const modalImg = document.getElementById('modal-image');
-    modalImg.style.cursor = 'grabbing'; // Change cursor to grabbing
 }
 
-// Handle Dragging
-function handleDragging(event) {
-    if (!isDragging) return;
+function moveImageOpposite(event) {
+    
+    const modalImg = event.target;
+    const bounds = modalImg.getBoundingClientRect();
+    const mouseX = event.clientX - bounds.left; // X coordinate of mouse relative to image
+    const mouseY = event.clientY - bounds.top; // Y coordinate of mouse relative to image
 
-    const modalImg = document.getElementById('modal-image');
+    // Calculate the percentage of mouse position relative to the image
+    const percentX = (mouseX / bounds.width) * 100;
+    const percentY = (mouseY / bounds.height) * 100;
 
-    const deltaX = event.clientX - startX;
-    const deltaY = event.clientY - startY;
+    // Opposite movement logic: 
+    // As the mouse moves to the right, the image moves to the left, and vice versa
+    // As the mouse moves down, the image moves up, and vice versa
+    const translateX = (percentX - 50) * -0.8; // Multiplier for smooth opposite movement
+    const translateY = (percentY - 50) * -0.8; // Multiplier for smooth opposite movement
 
-    offsetX += deltaX;
-    offsetY += deltaY;
-
-    modalImg.style.transform = `scale(2) translate(${offsetX}px, ${offsetY}px)`;
-
-    startX = event.clientX;
-    startY = event.clientY;
+    // Update the image's transform to scale and move
+    modalImg.style.transform = `scale(2) translate(${translateX}%, ${translateY}%)`;
 }
-
-// Stop Dragging
-function stopDragging() {
-    if (!isDragging) return;
-
-    const modalImg = document.getElementById('modal-image');
-    modalImg.style.cursor = 'grab'; // Reset cursor to grab when not dragging
-    isDragging = false;
-}
-
-// Toggle Dark Mode
-function toggleDarkMode() {
-    const body = document.body;
-    body.classList.toggle('dark');
-    const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.textContent = body.classList.contains('dark') ? '🌙' : '🌞';
-}
-
-// Event Listeners
-document.getElementById('theme-toggle').addEventListener('click', toggleDarkMode);
-document.getElementById('modal-image').addEventListener('click', enableZoom); // Zoom toggle
-document.getElementById('modal-image').addEventListener('mousedown', startDragging);
-document.addEventListener('mousemove', handleDragging);
-document.addEventListener('mouseup', stopDragging);
 
 // Initialize the App
 renderPhotos();

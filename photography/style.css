@@ -4,6 +4,9 @@
     --text-color: #333;
     --card-bg: #fff;
 }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     margin: 0;
@@ -12,10 +15,7 @@ body {
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-.dark{
-background-color: #1e1e1e;
-color:white;
-}
+
 /* Header */
 .portfolio-header {
     font-family: "Ms Madi", cursive;
@@ -23,9 +23,9 @@ color:white;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: #abb2b9;
+    background-color: white;
     color: black;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow to the bottom */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .portfolio-header h1 {
@@ -83,38 +83,113 @@ color:white;
     color: #ff6f61;
 }
 
-/* Masonry Grid */
-/* Masonry Grid */
+/* Masonry Layout */
 .masonry-grid {
     column-count: 4;
     column-gap: 0.5rem;
-    row-gap: 0.5rem;
     padding: 1rem;
-    overflow: hidden; /* Prevents overflow during zoom */
 }
 
 .masonry-grid img {
     width: 100%;
     display: block;
-    border-radius: 2px;
-    transition: transform 0.7s ease, box-shadow 0.7s ease; /* Smooth transition for zoom */
+    transition: transform 0.9s ease, box-shadow 0.9s ease !important;
     opacity: 1;
     object-fit: cover;
-    margin-bottom:1rem;
-    cursor: pointer; /* Change cursor to pointer */
+    margin-bottom: 0.5rem;
+    cursor: pointer;
 }
 
 .masonry-grid img:hover {
-    z-index: 1;
-    transform: scale(1.1); /* Zoom in on hover */
-    box-shadow: 0 15px 26px rgba(0, 0, 0, 0.5); /* Add shadow for effect */
+    z-index: 999;
+    transform: scale(1.5);
+    box-shadow: 0px 0px 10rem rgba(0, 0, 0, 1);
 }
 
+/* Grid Layout */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 fixed columns */
+    gap: 10px;
+    padding: 1rem;
+}
 
+.grid-layout img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3; /* Set the base aspect ratio for all images */
+    object-fit: cover; 
+    transition: transform 0.9s ease, box-shadow 0.9s ease !important;
+    cursor: pointer;
+}
 
+.grid-layout img.vertical {
+    grid-row: span 2; /* Make vertical images take up 2 rows */
+    height: 100%; /* Ensures the image fits within the space */
+    object-fit: cover; /* Ensures vertical images resize properly */
+}
 
+.grid-layout img:hover {
+    z-index: 999;
+    transform: scale(1.5) !important;
+    box-shadow: 0px 0px 10rem rgba(0, 0, 0, 1);
+}
 
-/* Modal Styles */
+/* Layout Toggle Button */
+.layout-section {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.layout-toggle-button {
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    opacity:0.5;
+    border: 1px dotted black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.layout-toggle-button:hover {
+    background-color: #555;
+    color:white;
+}
+
+/* Sorting Options */
+.sorting-section {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.sort-toggle-button {
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    border: 1px dotted black;
+    opacity:0.5;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sort-toggle-button:hover {
+    background-color: #555;
+    color:white;
+}
+
+.dark .sort-toggle-button, 
+.dark .layout-toggle-button {
+    background-color: #333;
+    color: white;
+}
+
+.dark .sort-toggle-button:hover, 
+.dark .layout-toggle-button:hover {
+    background-color: #555;
+}
+
 /* Modal Styles */
 .image-modal {
     display: none; /* Hidden by default */
@@ -159,41 +234,26 @@ color:white;
 }
 
 
-#modal-caption {
-    margin-top: 10px;
-    color: white;
-    text-align: center;
-    font-size: 1.2rem;
-}
-
 .close {
     position: absolute;
     top: 20px;
     right: 30px;
     color: white;
     font-size: 2rem;
-    font-weight: bold;
     cursor: pointer;
 }
 
 .nav-button {
     position: absolute;
     top: 50%;
-    background: rgba(0, 0, 0, 0.6);
-    border: none;
+    background: rgba(0, 0, 0, 0);
     color: white;
     font-size: 2rem;
     padding: 10px;
     cursor: pointer;
-    border-radius: 50%;
+    border:none;
     transform: translateY(-50%);
-    z-index: 1001;
     transition: background 0.3s ease;
-}
-
-.nav-button:hover {
-    background: rgba(255, 255, 255, 0.8);
-    color: black;
 }
 
 .nav-button.prev {
@@ -204,33 +264,26 @@ color:white;
     right: 30px;
 }
 
-/* Mobile Compatibility */
+.nav-button:hover {
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+}
+
+.dark {
+    background-color: #1e1e1e;
+    color: white;
+}
+
 @media (max-width: 768px) {
     .masonry-grid {
         column-count: 2;
-        column-gap:0.2rem;
-        row-gap: 0.2rem; /* Smaller row gap for mobile screens */
-        padding:0.2rem;
     }
 
-    .nav-button {
-        font-size: 1.5rem;
-        padding: 8px;
-    }
-
-
-    .modal-content {
-        max-width: 95%;
-        max-height: 75%;
-    }
-    .masonry-grid img{
-        margin-bottom:0.2rem;
-        border-radius:0px;
-
+    .grid-layout {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 }
 
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;

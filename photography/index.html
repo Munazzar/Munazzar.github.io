@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Macondo&family=Ms+Madi&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Macondo&family=Ms+Madi&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="portfolio-header">
-        <h1 >Portfolio Galleria</h1>
+        <h1>Portfolio Galleria</h1>
         <button id="theme-toggle" class="theme-toggle">🌞</button>
     </header>
 
@@ -23,12 +23,23 @@
         <h2>Munazzar</h2>
         <div class="contact-links">
             <a href="mailto:mdmunazzar@gmail.com">mdmunazzar@gmail.com</a>
-
         </div>
     </section>
 
+    <!-- Layout Toggle Options -->
+    <section class="layout-section">
+        <button id="layout-toggle" class="layout-toggle-button">GRID</button>
+        <button id="sort-toggle" class="sort-toggle-button">UP-DOWN</button>
+    </section>
+
+    <!-- Sorting Options -->
+    <section class="sorting-section">
+       
+    </section>
+
     <p id="loading">Loading photos, please wait...</p>
-    <section id="gallery" class="masonry-grid">
+
+    <section id="gallery" class="grid-layout masonry-grid">
         <!-- Photos will be added dynamically here -->
     </section>
 
@@ -40,7 +51,7 @@
     <div id="image-modal" class="image-modal">
         <span class="close" onclick="closeModal()">&times;</span>
         <div class="image-frame">
-        <img class="modal-content" id="modal-image" />
+            <img class="modal-content" id="modal-image" />
         </div>
         <div id="modal-caption"></div>
         <button class="nav-button prev" onclick="prevImage()">&#10094;</button>
