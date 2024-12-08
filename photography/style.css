@@ -220,7 +220,7 @@ body {
 }
 
 .modal-content {
-    max-width: auto;
+    max-width: 90%;
     max-height: 85%;
     object-fit: contain;
     transition: transform 0.3s ease-in-out;
