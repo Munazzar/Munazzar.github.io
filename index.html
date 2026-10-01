@@ -204,6 +204,26 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform 1s var(--spring)}
 .reveal.in{opacity:1;transform:none}
 
+/* interactive bits */
+.progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:40;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--accent),#AC93FF,#46C99B)}
+.name .ch{transition:translate .55s var(--spring),color .4s;cursor:default}
+.name .ch.pop{translate:0 -.1em;color:var(--accent)}
+.stack{cursor:pointer;outline:none}
+.stack .s1{z-index:1}.stack .s2{z-index:2}.stack .s3{z-index:3}
+.stack .hint{position:absolute;left:50%;bottom:-6px;translate:-50% 0;z-index:5;padding:7px 12px;border-radius:999px;background:rgba(13,19,38,.85);border:1px solid var(--line-2);color:var(--muted);backdrop-filter:blur(6px);transition:color .2s,border-color .2s}
+.stack:hover .hint,.stack:focus-visible .hint{color:var(--accent);border-color:var(--accent)}
+.sky-hint{margin-top:26px;color:var(--dim);display:flex;align-items:center;gap:8px}
+.sky-hint i{font-style:normal;color:var(--accent)}
+@media (hover:hover) and (pointer:fine){
+  .card{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px))}
+  .card:hover{--ty:-6px;transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty));transition:transform .25s ease-out,border-color .3s,box-shadow .4s}
+}
+@media (hover:none){.sky-hint{display:none}}
+.offclock span{transition:border-color .2s,transform .4s var(--spring)}
+.offclock span:hover{border-color:var(--accent);transform:translateY(-2px)}
+.offclock span:hover svg{animation:wig .6s var(--ease)}
+@keyframes wig{20%{rotate:-14deg}50%{rotate:12deg}80%{rotate:-5deg}}
+
 @media (max-width:980px){
   .hero{grid-template-columns:1fr;min-height:auto;padding-top:120px}
   .stack{height:auto;aspect-ratio:16/12;max-width:620px;width:100%}
@@ -227,6 +247,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </style>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 <canvas id="sky"></canvas>
 <div class="aurora a"></div><div class="aurora b"></div>
 
@@ -254,12 +275,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <div><b id="nph">100</b><span class="mono">Photographs</span></div>
         <div><b>0</b><span class="mono">Servers to pay for</span></div>
       </div>
+      <div class="mono sky-hint"><i>✦</i>Move across the sky · click it for a shooting star</div>
     </div>
-    <a class="stack" href="#work" aria-label="See the apps">
+    <div class="stack" id="stack" role="button" tabindex="0" aria-label="Shuffle the app screenshots">
       <div class="s s1"><img src="assets/shots/picturedrocks.webp" alt="" width="1120" height="700"></div>
       <div class="s s2"><img src="assets/shots/meridian.webp" alt="" width="1120" height="700"></div>
       <div class="s s3"><img src="assets/shots/plotline.webp" alt="" width="1120" height="700"></div>
-    </a>
+      <span class="mono hint">Tap to shuffle</span>
+    </div>
   </div>
 
   <div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
@@ -338,8 +361,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <span class="mono k">Off the clock</span>
           <h3>Beyond the keyboard</h3>
           <div class="offclock">
-            <span><svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2.5l1.5-2h6l1.5 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5"/></svg>passion for photography</span>
-            <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m12 7 4 3-1.5 4.5h-5L8 10z"/></svg>Football</span>
+            <span><svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2.5l1.5-2h6l1.5 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5"/></svg>A real passion for photography</span>
+            <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m12 7 4 3-1.5 4.5h-5L8 10z"/></svg>Football, most weekends</span>
             <span><svg viewBox="0 0 24 24"><path d="M15 4a8 8 0 1 0 5 13.5A7 7 0 0 1 15 4z"/><path d="m18 6 .6 1.4L20 8l-1.4.6L18 10l-.6-1.4L16 8l1.4-.6z"/></svg>A practicing Muslim</span>
             <span><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 11v3M5.5 12.5h3M15.5 12h.01M18 13.5h.01"/></svg>Gaming</span>
             <span><svg viewBox="0 0 24 24"><path d="M2 16l20-6-3-3-6 2-5-4-2 1 3 5-4 1-2-1-1 1z"/><path d="M3 21h18"/></svg>Travel</span>
@@ -434,7 +457,21 @@ $('#grid').innerHTML=APPS.map((a,i)=>`
    </div>
   </div>
  </article>`).join('');
-$$('.card').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');}));
+const fine=matchMedia('(hover:hover) and (pointer:fine)').matches,calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+$$('.card').forEach(c=>{
+ c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;
+  c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');
+  if(fine&&!calm){c.style.setProperty('--ry',((px-.5)*5).toFixed(2)+'deg');c.style.setProperty('--rx',((.5-py)*4).toFixed(2)+'deg');}});
+ c.addEventListener('pointerleave',()=>{c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg');});
+});
+
+/* name letters hop when touched */
+$$('.name .ch').forEach(ch=>{const hop=()=>{ch.classList.add('pop');clearTimeout(ch._t);ch._t=setTimeout(()=>ch.classList.remove('pop'),450)};ch.addEventListener('pointerenter',hop);ch.addEventListener('pointerdown',hop);});
+
+/* hero stack shuffles */
+(()=>{const s=$('#stack');const cycle=()=>{const cards=[...s.querySelectorAll('.s')];
+  cards.forEach(el=>{const n=+el.className.match(/s(\d)/)[1];el.classList.remove('s'+n);el.classList.add('s'+(n===3?1:n+1));});};
+ s.addEventListener('click',cycle);s.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();cycle()}});})();
 
 /* photographs — same Drive folder as /photography */
 const KEY='AIzaSyCgkQ2GWpKqy-z0eZqmSA0t13QCxm5r9DY',FOLDER='1UGM6jngyRxueLFILwucp3pqU-1vv1NMz',SHOW=20;
@@ -455,15 +492,33 @@ const hide=()=>$('#lb').classList.remove('on');
 $('#lb .x').onclick=hide;$('#lb .prev').onclick=()=>show(pi-1);$('#lb .next').onclick=()=>show(pi+1);
 $('#lb').onclick=e=>{if(e.target.id==='lb')hide()};
 addEventListener('keydown',e=>{if(!$('#lb').classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(pi-1);if(e.key==='ArrowRight')show(pi+1);});
+(()=>{let sx=null,sy=0;const lb=$('#lb');
+ lb.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+ lb.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;sx=null;
+  if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy))show(pi+(dx<0?1:-1));else if(dy>90)hide();});})();
 
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
 $$('.reveal').forEach(el=>io.observe(el));
-addEventListener('scroll',()=>$('#top').classList.toggle('solid',scrollY>20),{passive:true});
+addEventListener('scroll',()=>{$('#top').classList.toggle('solid',scrollY>20);
+ const m=document.documentElement.scrollHeight-innerHeight;$('#progress').style.transform=`scaleX(${m>0?scrollY/m:0})`;},{passive:true});
 
-(()=>{const c=$('#sky'),x=c.getContext('2d'),still=matchMedia('(prefers-reduced-motion: reduce)').matches;let st=[],w,h,d;
+(()=>{const c=$('#sky'),x=c.getContext('2d'),still=calm;let st=[],shoot=[],w,h,d,mx=-1e4,my=-1e4;
  function size(){d=Math.min(devicePixelRatio||1,2);w=c.width=innerWidth*d;h=c.height=innerHeight*d;c.style.width=innerWidth+'px';c.style.height=innerHeight+'px';
   st=Array.from({length:Math.round(innerWidth*innerHeight/5000)},()=>({x:Math.random()*w,y:Math.random()*h,r:(Math.random()*1.1+.25)*d,p:Math.random()*6.3,s:.4+Math.random()*1.4,v:(Math.random()*.05+.01)*d}));}
- function draw(t){x.clearRect(0,0,w,h);for(const s of st){x.fillStyle=`rgba(236,234,227,${.2+.55*(.5+.5*Math.sin(t/1000*s.s+s.p))})`;x.beginPath();x.arc(s.x,s.y,s.r,0,6.3);x.fill();if(!still){s.x-=s.v;if(s.x<0)s.x=w}}if(!still)requestAnimationFrame(draw)}
+ addEventListener('pointermove',e=>{if(e.pointerType==='mouse'){mx=e.clientX*d;my=e.clientY*d}},{passive:true});
+ document.addEventListener('pointerleave',()=>{mx=my=-1e4});
+ const fire=(x0,y0)=>{const a=Math.PI*(.12+Math.random()*.16);shoot.push({x:x0,y:y0,vx:-Math.cos(a)*14*d,vy:Math.sin(a)*14*d,life:1});};
+ addEventListener('click',e=>{if(still||e.target.closest('a,button,[role=button],.card,.panel,.ph,input,.lb,.top'))return;fire(e.clientX*d,e.clientY*d);});
+ setInterval(()=>{if(!still&&!document.hidden&&Math.random()<.55)fire(w*(.45+Math.random()*.55),h*Math.random()*.4)},7000);
+ function draw(t){x.clearRect(0,0,w,h);const R=150*d,near=[];
+  for(const s of st){const a=.2+.55*(.5+.5*Math.sin(t/1000*s.s+s.p));const dd=Math.hypot(s.x-mx,s.y-my);
+   if(dd<R)near.push([s,dd]);
+   x.fillStyle=`rgba(236,234,227,${dd<R?Math.min(1,a+.4):a})`;x.beginPath();x.arc(s.x,s.y,dd<R?s.r*1.6:s.r,0,6.3);x.fill();if(!still){s.x-=s.v;if(s.x<0)s.x=w}}
+  if(near.length>1){near.sort((p,q)=>p[1]-q[1]);const pts=near.slice(0,9).map(p=>p[0]);x.lineWidth=d*.8;
+   for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const L=Math.hypot(pts[i].x-pts[j].x,pts[i].y-pts[j].y);if(L<110*d){x.strokeStyle=`rgba(255,181,71,${.35*(1-L/(110*d))})`;x.beginPath();x.moveTo(pts[i].x,pts[i].y);x.lineTo(pts[j].x,pts[j].y);x.stroke();}}}
+  shoot=shoot.filter(s=>s.life>0);for(const s of shoot){const g=x.createLinearGradient(s.x,s.y,s.x-s.vx*7,s.y-s.vy*7);g.addColorStop(0,`rgba(255,236,200,${s.life})`);g.addColorStop(1,'rgba(255,236,200,0)');
+   x.strokeStyle=g;x.lineWidth=2*d;x.lineCap='round';x.beginPath();x.moveTo(s.x,s.y);x.lineTo(s.x-s.vx*7,s.y-s.vy*7);x.stroke();s.x+=s.vx;s.y+=s.vy;s.life-=.018;}
+  if(!still)requestAnimationFrame(draw)}
  size();addEventListener('resize',size);requestAnimationFrame(draw);})();
 </script>
 </body>
