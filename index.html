@@ -475,6 +475,8 @@ $$('.name .ch').forEach(ch=>{const hop=()=>{ch.classList.add('pop');clearTimeout
 
 /* photographs — same Drive folder as /photography */
 const KEY='AIzaSyCgkQ2GWpKqy-z0eZqmSA0t13QCxm5r9DY',FOLDER='1UGM6jngyRxueLFILwucp3pqU-1vv1NMz',SHOW=20;
+/* hand-picked frames, in display order (Drive file IDs) */
+const PICKS=['1cdhrFLPLySk7qaUX1wZD0ZP2p_pohUT2','1Slcn2l_6himS5vl_JcllLPNIGeRjlOVO','11ylLDunCV9-r3RftNqkAL91QcMBGZ8lc','1E0mx_8sI9niH_Zib1D57O_C0DPgAhjw7','11fAkGf1dCm--YU6nnHlXplEDU_RAQKAU','1BqqG6rSKU7bpdju5ZDh4VLlJxa99NmMJ','1-_H6MKh12WWmGEe3S1gztbosn1l9C4qV','10-hhnAZs9HDz8eeCrXejtvETc2H1cW3B','10DA0RfbuhW7IImgzeLZbpLFXgZIt2-iY','10pQwUZ3A_6nPTWUn-Ray79Augfs1Fm0y','10yvVztWNslCf4PDTfiDlqO_vCG_bX2d8','1-QTFnYgJETAmPbwOPWFjp8LEAtSl-qEV','1y4va-NGXJnMZ5CKgRK5Az10QJDnxaJxE','1yQdX6WSXJ2xSqTo5idUb9H0LSbMMn-r5','1ASgoxOayIDhChfotQaP0acHA-uu1ARYq'];
 let PH=[],pi=0;
 (async()=>{try{
  const q=new URLSearchParams({key:KEY,q:`'${FOLDER}' in parents and mimeType contains 'image/' and trashed=false`,fields:'files(id,thumbnailLink,imageMediaMetadata(width,height,time))',pageSize:100});
@@ -482,9 +484,11 @@ let PH=[],pi=0;
  const f=((await r.json()).files||[]).filter(x=>x.thumbnailLink);if(!f.length)throw 0;
  const t=x=>(x.imageMediaMetadata&&x.imageMediaMetadata.time||'').replace(/^(\d+):(\d+):(\d+)/,'$1-$2-$3');
  f.sort((a,b)=>t(b).localeCompare(t(a)));
- PH=f.map(x=>({s:x.thumbnailLink.replace(/=s\d+$/,'=s800'),l:x.thumbnailLink.replace(/=s\d+$/,'=s2000'),w:x.imageMediaMetadata?.width||4,h:x.imageMediaMetadata?.height||3,y:t(x).slice(0,4)}));
- $('#phcount').textContent=PH.length;$('#nph').textContent=PH.length;
- $('#masonry').innerHTML=PH.slice(0,SHOW).map((p,i)=>`<button class="ph" data-i="${i}" data-y="${p.y}" style="aspect-ratio:${p.w}/${p.h}" aria-label="Photograph ${i+1}"><img src="${p.s}" alt="" loading="lazy" onload="this.classList.add('ok')"></button>`).join('');
+ const total=f.length,byId=Object.fromEntries(f.map(x=>[x.id,x]));
+ const chosen=PICKS.map(id=>byId[id]).filter(Boolean);
+ PH=(chosen.length?chosen:f.slice(0,SHOW)).map(x=>({s:x.thumbnailLink.replace(/=s\d+$/,'=s800'),l:x.thumbnailLink.replace(/=s\d+$/,'=s2000'),w:x.imageMediaMetadata?.width||4,h:x.imageMediaMetadata?.height||3,y:t(x).slice(0,4)}));
+ $('#phcount').textContent=total;$('#nph').textContent=total;
+ $('#masonry').innerHTML=PH.map((p,i)=>`<button class="ph" data-i="${i}" data-y="${p.y}" style="aspect-ratio:${p.w}/${p.h}" aria-label="Photograph ${i+1}"><img src="${p.s}" alt="" loading="lazy" onload="this.classList.add('ok')"></button>`).join('');
  $$('.ph[data-i]').forEach(b=>b.onclick=()=>show(+b.dataset.i));
 }catch(e){$('#phcount').textContent='';$('#masonry').outerHTML='<div class="empty">The photographs live in the <a href="photography/">full gallery →</a></div>';$('.more').remove();}})();
 function show(i){pi=(i+PH.length)%PH.length;$('#lb img').src=PH[pi].l;$('#lb .n').textContent=`${pi+1} / ${PH.length}`;$('#lb').classList.add('on');}
