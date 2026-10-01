@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Munazzar — software developer & photographer</title>
+<meta name="description" content="Munazzar is a software developer near Chicago building enterprise platforms on Adobe Experience Manager, edge computing and SSO — and quiet, local-first apps of his own.">
+<meta property="og:title" content="Munazzar — software developer & photographer">
+<meta property="og:description" content="Enterprise AEM, edge and identity by day. Quiet, local-first apps and photographs by night.">
+<meta property="og:image" content="https://munazzar.github.io/assets/shots/plotline.webp">
+<meta name="theme-color" content="#0A0F1F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230A0F1F'/%3E%3Cpath d='M14 46V18h7l11 16 11-16h7v28h-7V30l-11 15-11-15v16z' fill='%23ECEAE3'/%3E%3Ccircle cx='50' cy='14' r='5' fill='%23FFB547'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/big-shoulders-display-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Big Shoulders Display';font-weight:700;font-display:swap;src:url(assets/fonts/big-shoulders-display-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Big Shoulders Display';font-weight:800;font-display:swap;src:url(assets/fonts/big-shoulders-display-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:'Figtree';font-weight:400;font-display:swap;src:url(assets/fonts/figtree-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Figtree';font-weight:500;font-display:swap;src:url(assets/fonts/figtree-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Figtree';font-weight:600;font-display:swap;src:url(assets/fonts/figtree-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Martian Mono';font-weight:400;font-display:swap;src:url(assets/fonts/martian-mono-latin-400-normal.woff2) format('woff2')}
+
+:root{
+  color-scheme:dark;
+  --bg:#0A0F1F;--bg-2:#0D1326;--surface:#121931;--surface-2:#19213D;
+  --line:rgba(200,210,240,.08);--line-2:rgba(200,210,240,.16);
+  --text:#ECEAE3;--muted:#8F96AC;--dim:#4F5876;
+  --accent:#FFB547;--on-accent:#1B1300;
+  --f-display:'Big Shoulders Display',Impact,'Arial Narrow',sans-serif;
+  --f-body:'Figtree',system-ui,-apple-system,sans-serif;
+  --f-mono:'Martian Mono',ui-monospace,Menlo,monospace;
+  --ease:cubic-bezier(.32,.72,0,1);
+  --spring:linear(0,.009,.037 1.7%,.153 3.6%,.776 10.3%,1.001 13.7%,1.117 16.9%,1.144 18.4%,1.137 20.6%,1.031 27.4%,.988 32.4%,.981 35.7%,.998 44.6%,1.004 50.1%,1);
+  --max:1200px;--gut:clamp(16px,4vw,48px);--r:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:10px}
+.mono{font-family:var(--f-mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+
+#sky{position:fixed;inset:0;z-index:0;pointer-events:none}
+.aurora{position:fixed;z-index:0;pointer-events:none;border-radius:50%;filter:blur(90px);opacity:.5}
+.aurora.a{width:52vw;height:52vw;right:-14vw;top:-18vw;background:radial-gradient(closest-side,rgba(255,181,71,.22),transparent)}
+.aurora.b{width:44vw;height:44vw;left:-16vw;top:40vh;background:radial-gradient(closest-side,rgba(172,147,255,.16),transparent)}
+.page{position:relative;z-index:1;overflow-x:clip}
+
+/* top bar */
+.top{position:fixed;top:0;left:0;right:0;z-index:30;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.top.solid{background:rgba(10,15,31,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.top .wrap{height:64px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font:800 22px/1 var(--f-display);text-transform:uppercase;letter-spacing:.02em}
+.brand img{width:32px;height:32px;border-radius:10px;border:1px solid var(--line-2);object-fit:cover}
+.top nav{display:flex;gap:4px}
+.top nav a{padding:8px 13px;border-radius:999px;font-size:14px;color:var(--muted);transition:color .2s,background .2s}
+.top nav a:hover{color:var(--text);background:var(--surface)}
+
+/* hero */
+.hero{min-height:100svh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:40px;padding-top:90px;padding-bottom:40px}
+.hi{color:var(--accent);display:flex;align-items:center;gap:10px}
+.hi .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,181,71,.6)}70%,100%{box-shadow:0 0 0 10px rgba(255,181,71,0)}}
+.name{font:800 clamp(72px,11.5vw,168px)/.8 var(--f-display);white-space:nowrap;text-transform:uppercase;letter-spacing:-.01em;margin:22px 0 0}
+.name .ch{display:inline-block;animation:rise .9s var(--ease) both}
+.name .period{color:var(--accent)}
+@keyframes rise{from{opacity:0;transform:translateY(.3em) rotate(4deg)}}
+.role{font:700 clamp(22px,2.6vw,30px)/1.1 var(--f-display);text-transform:uppercase;letter-spacing:.03em;margin:22px 0 0;color:var(--text)}
+.role span{color:var(--muted)}
+.lede{font-size:clamp(18px,2vw,21px);line-height:1.55;color:var(--muted);max-width:580px;margin:18px 0 0}
+.lede b{color:var(--text);font-weight:500}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:999px;font-weight:500;font-size:15px;border:1px solid var(--line-2);background:var(--surface);transition:transform .45s var(--spring),border-color .2s,background .2s,box-shadow .3s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px);border-color:var(--dim)}
+.btn.solid{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn.solid:hover{box-shadow:0 10px 30px -8px rgba(255,181,71,.55)}
+.btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.facts{display:flex;gap:30px;margin-top:42px;flex-wrap:wrap}
+.facts div{display:flex;flex-direction:column;gap:5px}
+.facts b{font:800 40px/1 var(--f-display)}
+.facts span{color:var(--muted)}
+
+/* fanned stack */
+.stack{position:relative;height:min(62vh,560px);perspective:1400px;display:block}
+.stack .s{position:absolute;width:82%;aspect-ratio:16/10;border-radius:16px;overflow:hidden;border:1px solid var(--line-2);background:var(--surface);box-shadow:0 40px 80px -20px rgba(0,0,0,.7);transition:transform 1s var(--spring)}
+.stack .s img{width:100%;height:100%;object-fit:cover;object-position:top left}
+.stack .s1{top:4%;right:-6%;transform:rotate(7deg);animation:bob 9s ease-in-out infinite}
+.stack .s2{top:26%;left:-2%;transform:rotate(-6deg);animation:bob 10s ease-in-out infinite -3s}
+.stack .s3{top:48%;right:4%;transform:rotate(2deg);animation:bob 8s ease-in-out infinite -5s}
+.stack:hover .s1{transform:rotate(11deg) translate(30px,-20px)}
+.stack:hover .s2{transform:rotate(-10deg) translate(-30px,0)}
+.stack:hover .s3{transform:rotate(0deg) translate(10px,30px)}
+@keyframes bob{50%{translate:0 -12px}}
+
+/* marquee */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:18px 0;background:rgba(13,19,38,.6)}
+.marquee .track{display:flex;gap:34px;width:max-content;animation:slide 50s linear infinite}
+.marquee span{font:800 34px/1 var(--f-display);text-transform:uppercase;letter-spacing:.02em;white-space:nowrap;display:flex;align-items:center;gap:34px}
+.marquee span i{font-style:normal;color:var(--accent);font-size:20px}
+.marquee span:nth-child(even){color:transparent;-webkit-text-stroke:1px var(--muted)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* section heads */
+section{padding:110px 0 30px}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:44px}
+.head h2{font:800 clamp(64px,10vw,128px)/.82 var(--f-display);text-transform:uppercase;margin:0;display:flex;align-items:flex-start;gap:14px}
+.head h2 sup{font:400 14px/1 var(--f-mono);color:var(--accent);margin-top:12px}
+.head p{color:var(--muted);margin:0;max-width:400px}
+
+/* about */
+.statement{font:500 clamp(24px,3.1vw,38px)/1.28 var(--f-body);letter-spacing:-.01em;max-width:1000px;margin:0 0 56px;color:var(--muted)}
+.statement b{color:var(--text);font-weight:500}
+.statement em{font-style:normal;color:var(--accent)}
+.about{display:grid;grid-template-columns:1.25fr 1fr;gap:22px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;position:relative;overflow:hidden}
+.panel h3{margin:0;font:800 34px/.95 var(--f-display);text-transform:uppercase}
+.panel .k{color:var(--accent);margin-bottom:12px;display:block}
+.panel .meta{color:var(--muted);margin-top:6px}
+.wins{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:0}
+.wins li{display:grid;grid-template-columns:22px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
+.wins li b{color:var(--text);font-weight:600}
+.wins li::before{content:'';width:9px;height:9px;margin-top:7px;border-radius:50%;border:2px solid var(--accent)}
+.side{display:grid;gap:22px;align-content:start}
+.big-num{font:800 72px/.8 var(--f-display);color:var(--accent);float:right;margin:-4px 0 0 12px}
+.stackrow{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--line);align-items:start}
+.stackrow:first-of-type{border-top:0;padding-top:4px}
+.stackrow .mono{color:var(--muted);padding-top:7px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:14px;padding:6px 11px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);transition:border-color .2s,color .2s}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.panel.full{grid-column:1/-1}
+.offclock{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.offclock span{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line);font-size:15px}
+.offclock svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+.card{--mx:50%;--my:0%;position:relative;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;isolation:isolate;transition:transform .6s var(--spring),border-color .3s,box-shadow .4s}
+.card::before{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(500px circle at var(--mx) var(--my),color-mix(in srgb,var(--c) 16%,transparent),transparent 45%);opacity:0;transition:opacity .4s}
+.card:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--c) 45%,transparent);box-shadow:0 30px 70px -30px color-mix(in srgb,var(--c) 55%,transparent)}
+.card:hover::before{opacity:1}
+.card .topline{position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--c),transparent);opacity:.7;z-index:3}
+.shot{position:relative;margin:14px 14px 0;border-radius:14px;overflow:hidden;background:var(--bg-2);border:1px solid var(--line);aspect-ratio:16/10;display:block}
+.chrome{position:absolute;inset:0 0 auto 0;height:28px;z-index:2;display:flex;align-items:center;gap:6px;padding:0 12px;background:rgba(13,19,38,.92);border-bottom:1px solid var(--line);font:10px var(--f-mono);color:var(--dim)}
+.chrome i{width:8px;height:8px;border-radius:50%;background:var(--line-2)}
+.chrome i:first-child{background:color-mix(in srgb,var(--c) 70%,transparent)}
+.chrome span{margin-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shot img{position:absolute;top:28px;left:0;width:100%;height:calc(100% - 28px);object-fit:cover;object-position:top left;transition:transform 1.2s var(--ease)}
+.card:hover .shot img{transform:scale(1.045) translateY(-1.5%)}
+.body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.title{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+.title h3{margin:0;font:800 clamp(36px,3.6vw,48px)/.9 var(--f-display);text-transform:uppercase;letter-spacing:.005em}
+.title .no{color:var(--dim);white-space:nowrap}
+.card .line{color:var(--text);font-size:17px;margin:0}
+.card .desc{color:var(--muted);font-size:15px;margin:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font:10px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:7px 9px;border-radius:8px;border:1px solid var(--line-2);color:var(--muted)}
+.links{display:flex;gap:8px;margin-top:auto;padding-top:8px;align-items:center}
+.links .btn{height:40px;font-size:14px;padding:0 16px}
+.links .go{background:var(--c);color:#0D111C;border-color:var(--c)}
+.links .go:hover{box-shadow:0 10px 26px -8px color-mix(in srgb,var(--c) 70%,transparent)}
+.links .when{margin-left:auto;color:var(--dim)}
+.card.feature{grid-column:1/-1;display:grid;grid-template-columns:1.35fr 1fr}
+.card.feature .shot{margin:16px 0 16px 16px;aspect-ratio:auto;min-height:420px}
+.card.feature .body{padding:34px 34px 30px;justify-content:center}
+.card.feature h3{font-size:clamp(56px,6vw,84px)}
+.badge{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:color-mix(in srgb,var(--c) 14%,transparent);color:var(--c);border:1px solid color-mix(in srgb,var(--c) 35%,transparent)}
+.badge i{width:6px;height:6px;border-radius:50%;background:currentColor;animation:blink 2s infinite}
+@keyframes blink{50%{opacity:.3}}
+
+/* photos */
+.masonry{columns:4 260px;column-gap:14px}
+.ph{display:block;width:100%;margin:0 0 14px;break-inside:avoid;border-radius:16px;overflow:hidden;position:relative;background:var(--surface);border:1px solid var(--line)}
+.ph img{width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .8s var(--ease),transform 1.2s var(--ease)}
+.ph img.ok{opacity:1;transform:none}
+.ph:hover img.ok{transform:scale(1.05)}
+.ph::after{content:attr(data-y);position:absolute;left:10px;bottom:10px;font:10px var(--f-mono);letter-spacing:.08em;color:#fff;padding:5px 8px;border-radius:8px;background:rgba(5,8,18,.55);backdrop-filter:blur(6px);opacity:0;transform:translateY(6px);transition:all .35s var(--ease)}
+.ph[data-y=""]::after{display:none}
+.ph:hover::after{opacity:1;transform:none}
+.ph.skel{height:240px;background:linear-gradient(100deg,var(--surface) 40%,var(--surface-2) 50%,var(--surface) 60%) 0 0/200% 100%;animation:sh 1.4s linear infinite}
+.ph.skel:nth-child(3n){height:340px}.ph.skel:nth-child(4n){height:180px}
+@keyframes sh{to{background-position:-200% 0}}
+.more{display:flex;justify-content:center;margin-top:26px}
+.empty{padding:34px;border:1px dashed var(--line-2);border-radius:var(--r);color:var(--muted);text-align:center}
+.empty a{color:var(--accent)}
+.lb{position:fixed;inset:0;z-index:60;background:rgba(3,5,12,.94);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.lb.on{opacity:1;pointer-events:auto}
+.lb img{max-width:92vw;max-height:84vh;border-radius:12px;box-shadow:0 30px 90px rgba(0,0,0,.6)}
+.lb button{position:absolute;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:22px;display:grid;place-items:center;transition:background .2s}
+.lb button:hover{background:rgba(255,255,255,.2)}
+.lb .prev{left:20px}.lb .next{right:20px}.lb .x{top:20px;right:20px;font-size:16px}
+.lb .n{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:#bbb}
+
+/* end */
+.end{padding:150px 0 70px;text-align:center}
+.end h2{font:800 clamp(64px,12vw,170px)/.82 var(--f-display);text-transform:uppercase;margin:0}
+.end h2 em{font-style:normal;color:var(--accent)}
+.end p{color:var(--muted);margin:24px auto 34px;max-width:480px}
+footer{border-top:1px solid var(--line);padding:24px 0 34px;color:var(--dim)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform 1s var(--spring)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;min-height:auto;padding-top:120px}
+  .stack{height:auto;aspect-ratio:16/12;max-width:620px;width:100%}
+  .card.feature{grid-template-columns:1fr}
+  .card.feature .shot{margin:14px 14px 0;min-height:0;aspect-ratio:16/10}
+  .card.feature .body{padding:22px 24px 24px}
+  .about{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .grid{grid-template-columns:1fr;gap:18px}
+  .top nav a.opt{display:none}
+  section{padding:80px 0 20px}
+  .masonry{columns:2 140px;column-gap:10px}.ph{margin-bottom:10px;border-radius:12px}
+  .lb .prev,.lb .next{top:auto;bottom:16px}
+  .marquee span{font-size:26px}
+  .panel{padding:22px}
+  .stackrow{grid-template-columns:1fr;gap:8px}
+  .stackrow .mono{padding-top:0}
+}
+@media (prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<canvas id="sky"></canvas>
+<div class="aurora a"></div><div class="aurora b"></div>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#"><img src="assets/me.webp" alt="" width="32" height="32">Munazzar</a>
+    <nav><a href="#work">Work</a><a href="#photos">Photos</a><a href="#about">About</a><a class="opt" href="https://github.com/Munazzar" target="_blank" rel="noopener">GitHub</a></nav>
+  </div>
+</header>
+
+<div class="page">
+  <div class="wrap hero">
+    <div>
+      <div class="mono hi"><span class="dot"></span><span id="hi">Hello</span></div>
+      <h1 class="name" id="name" aria-label="Munazzar">Munazzar</h1>
+      <p class="role">Software developer <span>· Chicago area</span></p>
+      <p class="lede">I build <b>quiet, local-first apps</b> for goals, money, journaling and travel — your data stays on your device or in your own Drive. When I'm not building, I'm <b>behind a camera</b>.</p>
+      <div class="acts">
+        <a class="btn solid" href="#work">See the work ↓</a>
+        <a class="btn" href="#photos"><svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2.5l1.5-2h6l1.5 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5"/></svg>Photographs</a>
+        <a class="btn" href="https://github.com/Munazzar" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>GitHub</a>
+      </div>
+      <div class="facts">
+        <div><b>08</b><span class="mono">Live apps</span></div>
+        <div><b id="nph">100</b><span class="mono">Photographs</span></div>
+        <div><b>0</b><span class="mono">Servers to pay for</span></div>
+      </div>
+    </div>
+    <a class="stack" href="#work" aria-label="See the apps">
+      <div class="s s1"><img src="assets/shots/picturedrocks.webp" alt="" width="1120" height="700"></div>
+      <div class="s s2"><img src="assets/shots/meridian.webp" alt="" width="1120" height="700"></div>
+      <div class="s s3"><img src="assets/shots/plotline.webp" alt="" width="1120" height="700"></div>
+    </a>
+  </div>
+
+  <div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>Work<sup>08</sup></h2>
+        <p>Things I've built and shipped on my own. Every one is live — open it straight in your browser, no account needed to look around.</p>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section id="photos">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>Photographs<sup id="phcount">··</sup></h2>
+        <p>Places, light and people I happened to be there for. Tap any frame to see it large.</p>
+      </div>
+      <div class="masonry" id="masonry">
+        <div class="ph skel"></div><div class="ph skel"></div><div class="ph skel"></div><div class="ph skel"></div>
+        <div class="ph skel"></div><div class="ph skel"></div><div class="ph skel"></div><div class="ph skel"></div>
+      </div>
+      <div class="more reveal"><a class="btn" href="photography/">See the full gallery →</a></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="head reveal"><h2>About</h2><p>If you'd like to know me a little more.</p></div>
+      <p class="statement reveal">I'm <b>Munazzar</b>, a software developer near Chicago. Currently, most days I work on <b>Adobe Experience Manager</b> and <b>Adobe Learning Manager</b> — the sites, the edge workers behind them and the sign-in that ties them together. I enjoy the whole arc: <em>writing the code, shaping the architecture, and the early conversations where a solution first takes shape.</em></p>
+
+      <div class="about">
+        <div class="panel reveal">
+          <span class="mono k">At work</span>
+          <h3>AEM · Learning Manager · Edge</h3>
+          <ul class="wins">
+            <li><span><b>Built a learning platform on AEM Edge Delivery</b> backed by Adobe Learning Manager — catalog, My Learning, course pages and an embedded player.</span></li>
+            <li><span><b>Moved its API proxy to Fastly Compute</b> from Cloudflare Workers, with signed sessions.</span></li>
+            <li><span><b>AEM 6.5 work for AbbVie</b> — SAML sign-in that keeps deep links intact, and a Learning Manager reference-site upgrade.</span></li>
+            <li><span><b>A theming framework</b> that authors control from Universal Editor, plus performance and accessibility fixes.</span></li>
+          </ul>
+        </div>
+
+        <div class="side">
+          <div class="panel reveal">
+            <span class="mono k">On the side</span>
+            <h3>Noor</h3>
+            <div class="mono meta">Android · on its way to Google Play</div>
+            <p style="color:var(--muted);margin:14px 0 0">Home-screen widgets of authentic Qur'an and Sunnah, with a reader, recitations, a daily tracker, prayer times, adhan and Qibla.</p>
+          </div>
+          <div class="panel reveal">
+            <span class="big-num">4.0</span>
+            <span class="mono k">Education</span>
+            <h3>M.S. Computer Science</h3>
+            <div class="mono meta">Western Illinois University</div>
+            <ul class="wins">
+              <li><span><b>B.Tech</b> — Vidya Jyothi Institute of Technology, where I led the team that built the faculty feedback system the institute kept using.</span></li>
+              <li><span><b>Expenso</b>, a class project, ended up running the books for a restaurant in Aurora, IL.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="panel full reveal">
+          <span class="mono k">Toolbox</span>
+          <h3 style="margin-bottom:18px">What I work with</h3>
+          <div class="stackrow"><span class="mono">Adobe</span><div class="chips"><span class="chip">AEM as a Cloud Service</span><span class="chip">AEM 6.5</span><span class="chip">Edge Delivery Services</span><span class="chip">Universal Editor</span><span class="chip">Sling Models</span><span class="chip">HTL</span><span class="chip">OSGi</span><span class="chip">Adaptive Forms</span><span class="chip">MSM</span><span class="chip">Learning Manager API v2</span><span class="chip">Captivate Prime</span></div></div>
+          <div class="stackrow"><span class="mono">Identity</span><div class="chips"><span class="chip">OAuth 2.0</span><span class="chip">SAML 2.0</span><span class="chip">OIDC</span><span class="chip">SSO</span><span class="chip">HMAC sessions</span></div></div>
+          <div class="stackrow"><span class="mono">Edge & cloud</span><div class="chips"><span class="chip">Fastly Compute</span><span class="chip">Cloudflare Workers</span><span class="chip">Google Cloud</span><span class="chip">Firebase</span><span class="chip">Docker</span></div></div>
+          <div class="stackrow"><span class="mono">Web & apps</span><div class="chips"><span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">PWAs</span><span class="chip">Web Crypto</span><span class="chip">IndexedDB</span><span class="chip">Google Drive API</span><span class="chip">On-device LLMs</span></div></div>
+          <div class="stackrow"><span class="mono">Languages</span><div class="chips"><span class="chip">Java / J2EE</span><span class="chip">PHP / Laravel</span><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">HTML & CSS</span></div></div>
+        </div>
+
+        <div class="panel full reveal">
+          <span class="mono k">Off the clock</span>
+          <h3>Beyond the keyboard</h3>
+          <div class="offclock">
+            <span><svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2.5l1.5-2h6l1.5 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5"/></svg>passion for photography</span>
+            <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m12 7 4 3-1.5 4.5h-5L8 10z"/></svg>Football</span>
+            <span><svg viewBox="0 0 24 24"><path d="M15 4a8 8 0 1 0 5 13.5A7 7 0 0 1 15 4z"/><path d="m18 6 .6 1.4L20 8l-1.4.6L18 10l-.6-1.4L16 8l1.4-.6z"/></svg>A practicing Muslim</span>
+            <span><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 11v3M5.5 12.5h3M15.5 12h.01M18 13.5h.01"/></svg>Gaming</span>
+            <span><svg viewBox="0 0 24 24"><path d="M2 16l20-6-3-3-6 2-5-4-2 1 3 5-4 1-2-1-1 1z"/><path d="M3 21h18"/></svg>Travel</span>
+            <span><svg viewBox="0 0 24 24"><path d="M4 11h16a8 8 0 0 1-16 0zM9 7c0-1.5 1-2 1-3M13 7c0-1.5 1-2 1-3"/></svg>Cooking</span>
+            <span><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>Anything new in tech</span>
+            <span><svg viewBox="0 0 24 24"><circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M5.5 17 9 9h6l3.5 8M12 17l-3-8M15 9l-1.5-3H16"/></svg>Mountain biking</span>
+            <span><svg viewBox="0 0 24 24"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/></svg>The gym</span>
+            <span><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z"/><path d="M19 15l.8 1.7 1.7.8-1.7.8L19 20l-.8-1.7-1.7-.8 1.7-.8zM5 16l.6 1.2 1.2.6-1.2.6L5 19.6l-.6-1.2-1.2-.6 1.2-.6z"/></svg>Night skies</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap end reveal">
+    <div class="mono" style="color:var(--accent)">That's the tour</div>
+    <h2 style="margin-top:20px">Let's build<br><em>something.</em></h2>
+    <p>Every app here is open source. Have a look at the code, or say hello on GitHub.</p>
+    <a class="btn solid" href="https://github.com/Munazzar" target="_blank" rel="noopener">github.com/Munazzar ↗</a>
+  </div>
+
+  <footer><div class="wrap mono"><span>© <span id="yr">2026</span> Munazzar</span><span>Made by hand · hosted on GitHub Pages</span></div></footer>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photograph">
+  <button class="x" aria-label="Close">✕</button><button class="prev" aria-label="Previous">‹</button>
+  <img alt=""><button class="next" aria-label="Next">›</button><span class="mono n"></span>
+</div>
+
+<script>
+const APPS=[
+ {name:'Plotline',path:'plotline',c:'#AC93FF',date:'Sep 2026',shot:'plotline',
+  line:'Plan short- and long-term life goals, step by step.',
+  desc:'Goals break into daily steps, with habits, a calendar, a journal, a timeline and a weekly review. An Ask assistant can run a language model right on the device — nothing leaves your browser unless you choose.',
+  tags:['PWA','IndexedDB','On-device LLM','Notifications']},
+ {name:'Clearli',path:'clearli',c:'#A9D14A',date:'Sep 2026',shot:'clearli',
+  line:'Your phone’s finances, decrypted only on your computer.',
+  desc:'A desktop dashboard for the Clearli phone app. It reads an end-to-end encrypted snapshot and decrypts it in your browser, with a passphrase that never leaves the machine.',
+  tags:['Web Crypto','AES-GCM','Firestore','Chart.js']},
+ {name:'Meridian',path:'Meridian',c:'#6B9BFF',date:'Aug 2026',shot:'meridian',
+  line:'Tasks, habits and money in one private ledger.',
+  desc:'Works offline on day one. Sign in to sync live across devices — every record is encrypted on the device before it reaches the database.',
+  tags:['Local-first PWA','Firebase Auth','Firestore','AES-GCM']},
+ {name:'Backpacker',path:'picturedrocks',c:'#FF8C6B',date:'Aug 2026',shot:'picturedrocks',
+  line:'A shared packing list and itinerary for a group trip.',
+  desc:'Everyone joins with a room code — no login — and every tick syncs live. Installable on Android and usable offline on the trail.',
+  tags:['PWA','Firebase realtime','Service worker']},
+ {name:'Good Old Journaling',path:'goodoldjournaling',c:'#F0C862',date:'Jul 2026',shot:'goodoldjournaling',
+  line:'A paper-feeling journal that lives in your Google Drive.',
+  desc:'No server, no database. 3D page flips, pressure-sensitive drawing with finger or stylus, and photos — with a Drive scope that only sees its own files.',
+  tags:['Google Drive API','drive.file','Canvas']},
+ {name:'ACexpenso',path:'acexpenso',c:'#46C99B',date:'Nov 2025',shot:'acexpenso',
+  line:'Daily books for a small print-and-copy business.',
+  desc:'Collections, expenses, closed days and tax-ready reports, with CSV/JSON export for the accountant, a PIN lock and Drive sync.',
+  tags:['PWA','Chart.js','Google Drive sync']},
+ {name:'My Quiet Space',path:'mqc',c:'#F585B8',date:'Nov 2025',shot:'mqc',
+  line:'A soft, private place to vent and journal.',
+  desc:'Daily entries with moods and simple formatting, saved to your own Google Drive and still writable offline.',
+  tags:['PWA','Google Drive API','Rich text']},
+ {name:'Note Cards',path:'notecards',c:'#5FB8FF',date:'Sep 2025',shot:'notecards',
+  line:'Quick checklists on index cards.',
+  desc:'Cards of tickable notes that work offline in the browser, with an optional Google Drive connection to keep them backed up.',
+  tags:['React','PWA','Google Drive API']}
+];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$('#yr').textContent=new Date().getFullYear();
+
+(()=>{const h=new Date().getHours();
+ $('#hi').textContent=h<5?'Still up? Me too.':h<12?'Good morning':h<17?'Good afternoon':h<22?'Good evening':'Still up? Me too.';
+ $('#name').innerHTML=[...'Munazzar'].map((c,i)=>`<span class="ch" style="animation-delay:${i*45}ms">${c}</span>`).join('')+'<span class="ch period" style="animation-delay:400ms">.</span>';})();
+
+(()=>{const words=APPS.map(a=>a.name).concat(['Photographs']);
+ const one=words.map(w=>`<span>${w}<i>✦</i></span>`).join('');$('#track').innerHTML=one+one;})();
+
+$('#grid').innerHTML=APPS.map((a,i)=>`
+ <article class="card reveal${i===0||(i===APPS.length-1&&APPS.length%2===0)?' feature':''}" style="--c:${a.c}">
+  <div class="topline"></div>
+  <a class="shot" href="${a.path}/" target="_blank" rel="noopener" aria-label="Open ${a.name}">
+   <div class="chrome"><i></i><i></i><i></i><span>munazzar.github.io/${a.path}</span></div>
+   <img src="assets/shots/${a.shot}.webp" alt="${a.name} screenshot" loading="${i<3?'eager':'lazy'}" width="1120" height="700">
+  </a>
+  <div class="body">
+   ${i===0?'<span class="badge mono"><i></i>Building now</span>':''}
+   <div class="title"><h3>${a.name}</h3><span class="mono no">${String(i+1).padStart(2,'0')}</span></div>
+   <p class="line">${a.line}</p>
+   <p class="desc">${a.desc}</p>
+   <div class="tags">${a.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+   <div class="links">
+    <a class="btn go" href="${a.path}/" target="_blank" rel="noopener">Open app ↗</a>
+    <a class="btn" href="https://github.com/Munazzar/${a.path}" target="_blank" rel="noopener">Source</a>
+    <span class="mono when">${a.date}</span>
+   </div>
+  </div>
+ </article>`).join('');
+$$('.card').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');}));
+
+/* photographs — same Drive folder as /photography */
+const KEY='AIzaSyCgkQ2GWpKqy-z0eZqmSA0t13QCxm5r9DY',FOLDER='1UGM6jngyRxueLFILwucp3pqU-1vv1NMz',SHOW=20;
+let PH=[],pi=0;
+(async()=>{try{
+ const q=new URLSearchParams({key:KEY,q:`'${FOLDER}' in parents and mimeType contains 'image/' and trashed=false`,fields:'files(id,thumbnailLink,imageMediaMetadata(width,height,time))',pageSize:100});
+ const r=await fetch('https://www.googleapis.com/drive/v3/files?'+q);if(!r.ok)throw 0;
+ const f=((await r.json()).files||[]).filter(x=>x.thumbnailLink);if(!f.length)throw 0;
+ const t=x=>(x.imageMediaMetadata&&x.imageMediaMetadata.time||'').replace(/^(\d+):(\d+):(\d+)/,'$1-$2-$3');
+ f.sort((a,b)=>t(b).localeCompare(t(a)));
+ PH=f.map(x=>({s:x.thumbnailLink.replace(/=s\d+$/,'=s800'),l:x.thumbnailLink.replace(/=s\d+$/,'=s2000'),w:x.imageMediaMetadata?.width||4,h:x.imageMediaMetadata?.height||3,y:t(x).slice(0,4)}));
+ $('#phcount').textContent=PH.length;$('#nph').textContent=PH.length;
+ $('#masonry').innerHTML=PH.slice(0,SHOW).map((p,i)=>`<button class="ph" data-i="${i}" data-y="${p.y}" style="aspect-ratio:${p.w}/${p.h}" aria-label="Photograph ${i+1}"><img src="${p.s}" alt="" loading="lazy" onload="this.classList.add('ok')"></button>`).join('');
+ $$('.ph[data-i]').forEach(b=>b.onclick=()=>show(+b.dataset.i));
+}catch(e){$('#phcount').textContent='';$('#masonry').outerHTML='<div class="empty">The photographs live in the <a href="photography/">full gallery →</a></div>';$('.more').remove();}})();
+function show(i){pi=(i+PH.length)%PH.length;$('#lb img').src=PH[pi].l;$('#lb .n').textContent=`${pi+1} / ${PH.length}`;$('#lb').classList.add('on');}
+const hide=()=>$('#lb').classList.remove('on');
+$('#lb .x').onclick=hide;$('#lb .prev').onclick=()=>show(pi-1);$('#lb .next').onclick=()=>show(pi+1);
+$('#lb').onclick=e=>{if(e.target.id==='lb')hide()};
+addEventListener('keydown',e=>{if(!$('#lb').classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(pi-1);if(e.key==='ArrowRight')show(pi+1);});
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+$$('.reveal').forEach(el=>io.observe(el));
+addEventListener('scroll',()=>$('#top').classList.toggle('solid',scrollY>20),{passive:true});
+
+(()=>{const c=$('#sky'),x=c.getContext('2d'),still=matchMedia('(prefers-reduced-motion: reduce)').matches;let st=[],w,h,d;
+ function size(){d=Math.min(devicePixelRatio||1,2);w=c.width=innerWidth*d;h=c.height=innerHeight*d;c.style.width=innerWidth+'px';c.style.height=innerHeight+'px';
+  st=Array.from({length:Math.round(innerWidth*innerHeight/5000)},()=>({x:Math.random()*w,y:Math.random()*h,r:(Math.random()*1.1+.25)*d,p:Math.random()*6.3,s:.4+Math.random()*1.4,v:(Math.random()*.05+.01)*d}));}
+ function draw(t){x.clearRect(0,0,w,h);for(const s of st){x.fillStyle=`rgba(236,234,227,${.2+.55*(.5+.5*Math.sin(t/1000*s.s+s.p))})`;x.beginPath();x.arc(s.x,s.y,s.r,0,6.3);x.fill();if(!still){s.x-=s.v;if(s.x<0)s.x=w}}if(!still)requestAnimationFrame(draw)}
+ size();addEventListener('resize',size);requestAnimationFrame(draw);})();
+</script>
+</body>
+</html>
