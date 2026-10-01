@@ -475,8 +475,8 @@ $$('.name .ch').forEach(ch=>{const hop=()=>{ch.classList.add('pop');clearTimeout
 
 /* photographs — same Drive folder as /photography */
 const KEY='AIzaSyCgkQ2GWpKqy-z0eZqmSA0t13QCxm5r9DY',FOLDER='1UGM6jngyRxueLFILwucp3pqU-1vv1NMz',SHOW=20;
-/* hand-picked frames, in display order (Drive file IDs) */
-const PICKS=['1cdhrFLPLySk7qaUX1wZD0ZP2p_pohUT2','1Slcn2l_6himS5vl_JcllLPNIGeRjlOVO','11ylLDunCV9-r3RftNqkAL91QcMBGZ8lc','1E0mx_8sI9niH_Zib1D57O_C0DPgAhjw7','11fAkGf1dCm--YU6nnHlXplEDU_RAQKAU','1BqqG6rSKU7bpdju5ZDh4VLlJxa99NmMJ','1-_H6MKh12WWmGEe3S1gztbosn1l9C4qV','10-hhnAZs9HDz8eeCrXejtvETc2H1cW3B','10DA0RfbuhW7IImgzeLZbpLFXgZIt2-iY','10pQwUZ3A_6nPTWUn-Ray79Augfs1Fm0y','10yvVztWNslCf4PDTfiDlqO_vCG_bX2d8','1-QTFnYgJETAmPbwOPWFjp8LEAtSl-qEV','1y4va-NGXJnMZ5CKgRK5Az10QJDnxaJxE','1yQdX6WSXJ2xSqTo5idUb9H0LSbMMn-r5','1ASgoxOayIDhChfotQaP0acHA-uu1ARYq'];
+/* hand-picked frames — gallery Image 5, 6, 33, 9, 19, 25, 38, 79, 84, 89, 91, 63, 1, 27, 4 (Drive file IDs) */
+const PICKS=['1q0Iet3_rNpizD6k3SqVNXRVVhzd99kBY','1N5IHQlkufcwxhlj5p1jBMHP5Aqz9-_fn','1ASgoxOayIDhChfotQaP0acHA-uu1ARYq','1FnwByTB5hu6qqWa_G-76yeJ_8ArcnPXB','1y4va-NGXJnMZ5CKgRK5Az10QJDnxaJxE','1cdhrFLPLySk7qaUX1wZD0ZP2p_pohUT2','1-INPwGwuAP9AZJwYdmpmFX4Pes2tEY9T','10DA0RfbuhW7IImgzeLZbpLFXgZIt2-iY','1iFFxv0MenzJpW_yKh5t2vomOcCcRxxLp','1-Gw42jcVgWmDe62yJaysMuYndHC3wqvB','1AbMg8xFVlLkkaOA7ORy9UqG0bpFYqD4T','1hvPcVFPxOLk8VEUinXDYoa7fAFaZebz1','1MQYc_d1oG0yUqoc95jLgM4TqzYY0Cx8Q','1izmx0AYTTeH3RjT4NPG4v0k-1OFtTq_M','1qO6nkQSV6mIAFjm_g3DGvnkBnR-XDwFk'];
 let PH=[],pi=0;
 (async()=>{try{
  const q=new URLSearchParams({key:KEY,q:`'${FOLDER}' in parents and mimeType contains 'image/' and trashed=false`,fields:'files(id,thumbnailLink,imageMediaMetadata(width,height,time))',pageSize:100});
